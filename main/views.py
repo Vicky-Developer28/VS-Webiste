@@ -659,7 +659,7 @@ def get_mysql_storage():
     return used_size_mb, total_size_mb
 
 
-def generate_disk_usage_chart():
+"""def generate_disk_usage_chart():
     # Get disk usage (for the filesystem)
     disk = psutil.disk_usage('/')
     used = disk.used / (1024 ** 3)  # GB
@@ -691,7 +691,7 @@ def generate_disk_usage_chart():
 
     buf.close()
     
-    return chart_data, used, free, disk.total / (1024 ** 3)
+    return chart_data, used, free, disk.total / (1024 ** 3)"""
 
 def generate_request_bar_chart():
     from django.utils.timezone import now
