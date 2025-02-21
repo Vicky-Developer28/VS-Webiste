@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Usage</title>
+</head>
+<body>
+    <h2>Storage Usage Report</h2>
+    <p>Total Storage: {{ total }} GB</p>
+    <p>Used Storage: {{ used }} GB</p>
+    <p>Free Storage: {{ free }} GB</p>
+    <p>Usage Percentage: {{ percent }}%</p>
+
+    <h3>Storage Pie Chart</h3>
+    <img src="data:image/png;base64,{{ chart_data }}" alt="Storage Pie Chart">
+</body>
+</html>

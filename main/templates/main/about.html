@@ -1,0 +1,1261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <meta name="keywords" content="Vimal Solar" />
+    <meta name="description" content="Vimal Solar" />
+    <title>Vimal Solar</title>
+
+    <!-- Favicon -->
+    <link href="{% static 'main/img/favicon.png' %}" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maragsa&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Theseasons"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Third-party Library Stylesheets -->
+    <link
+      href="{% static 'main/lib/animate/animate.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'main/lib/lightbox/css/lightbox.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Stylesheets -->
+    <link
+      type="text/css"
+      href="{% static 'main/css/style.css' %}"
+      rel="stylesheet"
+    />
+    
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'main/js/main.js' %}"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <style>
+      .footer {
+        font-size: 0.9rem;
+      }
+
+      .footer h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .footer ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer ul li a:hover {
+        color: #0d6efd;
+      }
+
+      .footer hr {
+        border-top: 1px solid #666;
+      }
+
+      .footer .text-white-50:hover {
+        color: #fff;
+      }
+
+      .footer img {
+        display: block;
+        margin: 0 auto;
+      }
+
+      .form body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      .form-control:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+      }
+
+      .form-section {
+        display: none;
+        margin-top: 15px;
+      }
+
+      .form-section.active {
+        display: block;
+      }
+
+      .form-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        background: #2575fc;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .form-btn:hover {
+        background: #1c5bb6;
+        transform: translateY(-2px);
+      }
+
+      /* General Styles */
+      body {
+        overflow-x: hidden;
+        font-family: "Times New Roman", Times, serif;
+        background-color: #ffffff;
+        margin-top: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Sticky Navbar */
+      .sticky-nav {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        height: 230px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Navbar adjustments */
+      .navbar {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        margin-bottom: 0;
+        padding: 0;
+      }
+
+      .navbar.navbar-expand-lg {
+        height: 80px;
+      }
+
+      /* Navbar Brand (logo) */
+      .navbar-brand img {
+        width: 250px;
+        height: auto;
+        font-family: "Maragsa", sans-serif;
+      }
+
+      /* Navbar Toggler Icon */
+      .navbar-toggler-icon {
+        background-color: transparent;
+      }
+
+      /* Nav-item button adjustments */
+      .nav-item.nav-link.btn {
+        height: 40px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-top: 5px;
+        color: black !important; /* Default color is black */
+        background-color: white;
+        border: 1px solid #007bff;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Active button */
+      .nav-item.nav-link.active {
+        background-color: #007bff;
+        color: white !important;
+      }
+
+      /* Change text color on hover */
+      .nav-item.nav-link.btn:hover {
+        color: white !important; /* Text turns white on hover */
+        background-color: #007bff; /* Blue background */
+        border-color: #007bff;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      }
+
+      /* Carousel image settings */
+      .carousel img {
+        object-fit: cover;
+      }
+
+      /* Large screen adjustments */
+      @media (min-width: 992px) {
+        .d-none.d-lg-flex {
+          display: flex !important;
+        }
+      }
+
+      /* Button Adjustments */
+      .navbar-nav .nav-item {
+        margin-left: 10px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: white;
+        background-color: #007bff;
+      }
+
+      /* Column and row alignment */
+      .container-fluid {
+        text-align: center;
+        padding: 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .col-lg-7,
+      .col-lg-5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .col-lg-7 .d-inline-flex,
+      .col-lg-5 .d-inline-flex {
+        align-items: center;
+      }
+
+      .col-lg-5 .d-inline-flex {
+        gap: 10px;
+      }
+
+      .navbar .fa {
+        font-size: 18px;
+      }
+      .btn-square {
+        padding: 10px;
+        margin-left: 10px;
+      }
+
+      .btn-link {
+        background-color: transparent;
+        border: none;
+      }
+
+      .btn-link:hover {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
+
+      .slide-bck-center {
+        -webkit-animation: slide-bck-center 0.5s
+          cubic-bezier(0.47, 0, 0.745, 0.715) 100ms forwards;
+        animation: slide-bck-center 0.5s cubic-bezier(0.47, 0, 0.745, 0.715)
+          100ms forwards;
+      }
+      @-webkit-keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+      @keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+
+      .shadow-drop-center {
+        -webkit-animation: shadow-drop-center 0.4s
+          cubic-bezier(0.215, 0.61, 0.355, 1) 1ms both;
+        animation: shadow-drop-center 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)
+          1ms both;
+      }
+
+      @-webkit-keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+      @keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      @-webkit-keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+      @keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+
+      .container-xxl {
+        background-color: #f8f9fa;
+        padding: 6rem 2rem;
+        border-radius: 8px;
+      }
+
+      .text-primary {
+        color: #007bff;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      h4 {
+        letter-spacing: 1px;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .portfolio-container .portfolio-item {
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .portfolio-container .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .portfolio-img {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        border-radius: 8px;
+      }
+
+      .portfolio-img img {
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-img:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .portfolio-img:hover .portfolio-btn {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .portfolio-btn .btn {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        border: none;
+      }
+
+      .portfolio-btn .btn:hover {
+        background-color: #007bff;
+      }
+
+      .portfolio-item .pt-3 {
+        text-align: center;
+      }
+
+      .portfolio-item p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #007bff;
+      }
+
+      .portfolio-item h5 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+
+        .portfolio-item {
+          margin-bottom: 2rem;
+        }
+
+        .portfolio-img {
+          height: auto; /* Maintain aspect ratio */
+        }
+      }
+
+      .carousel-item {
+        transition: transform 0.6s ease-in-out;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+      }
+
+      .carousel-control-prev-icon:hover,
+      .carousel-control-next-icon:hover {
+        background-color: #007bff;
+      }
+      /* Hover effect on images */
+      .project-images img:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+
+      /* Button Hover Effect */
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+
+      /* Media Query for Small Screens */
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        }
+      }
+      /* Adjust carousel for mobile screens */
+      @media (max-width: 768px) {
+        .carousel-image {
+          height: 300px; /* Maintain original aspect ratio */
+          max-height: 800px; /* Maintain original aspect ratio */
+
+          width: 100%; /* Full width */
+          object-fit: cover; /* Adjust image content fit */
+        }
+      }
+    </style>
+
+    <!-- Navbar Starts -->
+    <nav
+      class="navbar navbar-expand-lg sticky-nav position-absolute w-100 z-index-1" style="background-color: #ffffff">
+      <div class="container py-1">
+        <!-- Logo -->
+        <a
+          href="{% url 'index' %}"
+          class="navbar-brand me-2"
+          style="
+            font-family: 'Theseasons';
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-top: 15px;
+          "
+        >
+          <img
+            src="{% static 'main/img/favicon.png' %}"
+            alt="Logo"
+            style="width: 60px; height: 60px"
+            class="navbar-brand me-2"
+          />
+          Vimal Solar
+        </a>
+
+        <!-- Menu Icon -->
+        <button
+          class="navbar-toggler bg-transparent border-transparent"
+          type="button"
+          id="sidebarToggle"
+        >
+          <i class="bi bi-list"></i>
+          <!-- Using Bootstrap Icons -->
+        </button>
+
+        <script>style="height: 980px;"
+          document.addEventListener("DOMContentLoaded", function () {
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const navbarNav = document.getElementById("navbarNav");
+            const toggleIcon = document.getElementById("toggleIcon");
+
+            sidebarToggle.addEventListener("click", function () {
+              const isCollapsed = navbarNav.classList.contains("show");
+
+              // Toggle the sidebar
+              navbarNav.classList.toggle("show");
+
+              // Change icon
+              if (isCollapsed) {
+                toggleIcon.classList.remove("bi-x");
+                toggleIcon.classList.add("bi-list");
+              } else {
+                toggleIcon.classList.remove("bi-list");
+                toggleIcon.classList.add("bi-x");
+              }
+            });
+          });
+        </script>
+        
+
+        <!-- Navbar Links -->
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNav"
+          data-bs-auto-close="false"
+        >
+          <ul class="navbar-nav ms-auto">
+            <a
+              href="{% url 'index' %}"
+              class="btn nav-item nav-link  rounded-pill text-white btn-outline-light"
+              style="font-size: 14px"
+              >Home</a
+            >
+            <a
+              href="{% url 'project' %}"
+              class="btn nav-item nav-link rounded-pill text-white btn-outline-light "
+              style="font-size: 14px"
+              >Products</a
+            >
+            <a
+              href="{% url 'service' %}"
+              class="btn nav-item nav-link rounded-pill text-black btn-outline-light"
+              style="font-size: 14px"
+              >Services</a
+            >
+            <a
+              href="{% url 'project' %}"
+              class="btn nav-item nav-link rounded-pill text-black btn-outline-light"
+              style="font-size: 14px"
+              >Gallery</a
+            >
+            <a
+              href="{% url 'about' %}"
+              class="btn nav-item active nav-link rounded-pill text-black btn-outline-light"
+              style="font-size: 14px"
+            >
+              About</a
+            >
+            <a
+              href="{% url 'contact' %}"
+              class="btn nav-item nav-link rounded-pill text-black btn-outline-light"
+              style="font-size: 14px"
+              >Contact</a
+            >
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar Ends -->
+<!-- Page Header Start -->
+<!-- About Us Section Start -->
+<section class="position-relative bg-dark text-white" style="height: 320px; overflow: hidden;">
+    <!-- Background Image -->
+    <img src="{% static 'main/img/bg.jpg' %}" 
+         class="position-absolute w-100 h-100 object-fit-cover opacity-90" 
+         alt="Hero Image">
+
+    <!-- Darker Overlay for Better Text Contrast -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" 
+         style="background: rgba(0, 0, 0, 0.4);"> <!-- Lower opacity for visibility -->
+    </div>  
+
+    <!-- Content -->
+    <div class="container h-100 d-flex align-items-center text-center position-relative" style="z-index: 2; margin-top:30px; margin-left:805px;">
+        <div class="col-md-6 text-white">
+            <h1 class="display-4 fw-bold text-glow">About Us</h1>
+            <p class=" text-glow">
+                At Vimal Solar, we specialize in providing sustainable energy solutions and advanced security systems to power and protect your home or business.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- About Us Section End -->
+
+<!-- Additional CSS for Mobile & Text Enhancement -->
+<style>
+    /* Text Shadow for Better Readability */
+    .text-glow {
+        text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8); /* Brighter shadow */
+    }
+
+    /* Make sure text is above overlay */
+    .position-relative {
+        z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+        section.position-relative {
+            height: 350px !important;
+        }
+        .container {
+            justify-content: center !important;
+            text-align: center;
+        }
+    }
+</style>
+
+
+<!-- Page Header End -->
+<!-- About Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>About Us!</strong></h3>
+            <h4 class="mb-4 text-black text-center mt-4" style="font-size: 1.3rem;">5+ Years of Expertise in Solar and Security</h4>
+                        <!-- Image Section -->
+                        <div class="col-lg-5 col-12 animated slideInLeft py-4" data-wow-delay="0.2s">
+                            <div class="about-image text-center">
+                                <img src="{% static 'main/img/our-about.png' %}" class="img-fluid rounded" alt="About Our Team" style="height: 400px; ">
+                            </div>
+                        </div>
+                        <!-- Text Section -->
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem; margin-inline-start: 50px;">
+                        At <strong>Vimal Solar</strong>, we are dedicated to delivering sustainable energy solutions while ensuring cutting-edge security for homes and businesses. With a strong focus on Solar Energy Systems and advanced CCTV Networking, we empower our clients to confidently embrace a greener, safer, and more efficient future.<br><br>
+                        At Vimal Solar, our commitment goes beyond technology; we believe in building trust and long-term relationships with our clients. Our team combines years of experience with a passion for innovation, ensuring we deliver solutions that meet both present and future needs. Join us in shaping a world that’s not only secure but also powered sustainably for generations to come.
+                                            </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<section class="about-section">
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h2>Our Journey</h2>
+                <p>Since 2010, we've installed over 10,000 solar panels and secured 500+ properties with state-of-the-art security systems. Our dedication to sustainable energy and cutting-edge security technologies has made us the trusted choice in renewable solutions.</p>
+            </div>
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>To become the global leader in integrated solar and security solutions, creating a world where sustainable energy and cutting-edge security are seamlessly combined to power and protect communities worldwide.</p>
+            </div>
+            <div class="card">
+                <h3>Our Values</h3>
+                <p>We believe in delivering excellence through innovation, integrity, and a customer-centric approach, ensuring that every solution we provide adds value to our clients' lives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /* Base section styles */
+.about-section {
+    padding: 80px 0; /* Equivalent to py-20 */
+    background-color: #ffffff; /* bg-white */
+}
+
+/* Container */
+.container {
+    max-width: 1400px; /* Equivalent to max-w-8xl */
+    margin: 0 auto;
+    padding: 0 16px; /* Equivalent to px-4 sm:px-6 lg:px-8 */
+}
+
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default for mobile (1 column) */
+    gap: 32px; /* Equivalent to gap-8 */
+}
+
+/* Cards */
+.card {
+    background-color: #ffffff; /* bg-white */
+    padding: 32px; /* Equivalent to p-8 */
+    border-radius: 8px; /* Equivalent to rounded-lg */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds slight shadow for better visual */
+}
+
+/* Headings */
+h2, h3 {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    font-weight: 600; /* Equivalent to font-semibold */
+    margin-bottom: 16px; /* Equivalent to mb-4 */
+}
+
+/* Paragraphs */
+p {
+    color: #4a5568; /* Equivalent to text-gray-600 */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive (for Medium screens and up) */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* Equivalent to md:grid-cols-3 */
+    }
+}
+
+</style>
+ <!-- Vision Start -->
+ <div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Vision</strong></h3>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem; margin-inline-start: 50px;">
+                        To lead the transition toward a greener and safer world by offering reliable, high-quality, and innovative solutions in solar energy and security networking.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 animated slideInLeft py-4" data-wow-delay="0.2s">
+                <div class="about-image text-center">
+                    <img src="{% static 'main/img/our-vision.png' %}" class="img-fluid rounded" alt="About Our Team" style="height: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Mission</strong></h3>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-mission.png' %}" class="img-fluid rounded" alt="Our Journey" style="height: 400px;">
+            </div>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInLeft" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black text-center mt-4 py-4" style="font-size: 1rem;">
+                    <ul>
+                        <li>To provide cutting-edge solar energy solutions that reduce energy costs and environmental impact.</li><br> 
+                        <li>To deliver seamless and secure CCTV networking systems tailored to individual and organizational needs.</li><br>
+                        <li> To build long-term relationships with our clients by ensuring exceptional service and trustworthiness. </li>
+                    </ul>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Journey Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Journey</strong></h3>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem;">
+                    <strong>Vimal Solar</strong> was officially established in 2024 as a GST-registered company and proudly partners with renowned brands like <strong>UTL Solar</strong> and <strong>Adani Solar</strong>. 
+                    However, our roots trace back to 2020, where we honed our skills and built extensive expertise while working under other companies.
+                </p>
+                <p class="text-black mt-4" style="font-size: 1rem;">
+                    Today, with over five years of experience, we excel in delivering high-quality solar power solutions and advanced CCTV systems. From <strong>layout design</strong> and <strong>system planning</strong> to <strong>installation</strong> and <strong>ongoing maintenance</strong>, we manage every step with precision and dedication.
+                </p>
+            </div>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInLeft" data-wow-delay="0.2s">
+                <img src="{% static 'main/our-journey.png' %}" class="img-fluid rounded" alt="Our Journey" style="height: 400px; width: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Journey End -->
+
+<!-- Our Services Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container services px-lg-0 py-4">
+        <h3 class="text-primary text-center"><strong>Our Services</strong></h3>
+            <h4 class="text-black text-center">What We Offer</h4>
+        <div class="row g-4 mx-lg-7 align-items-center">
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-services.png' %}" class="img-fluid rounded" alt="Our Services" style="height: 400px; width: 400px;">
+            </div>
+            <div class="col-lg-4 col-16 services-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black" style="font-size: 1rem; list-style-type: none; padding-left: 0;">
+                    <li style="text-align: left;">
+                        <strong>1. Solar Energy Solutions</strong>
+                        <ul style="margin-left: 20px; text-align: left;">
+                            <li><strong>Solar Panel Installation:</strong> High-efficiency solar panels for residential, commercial, and industrial use.</li>
+                            <li><strong>Solar Inverters & Batteries:</strong> Reliable backup solutions for uninterrupted power supply.</li>
+                            <li><strong>Energy Consulting:</strong> Customized plans to optimize energy savings and sustainability.</li>
+                        </ul>
+                    </li>
+                    <li style="text-align: left;">
+                        <strong>2. Surveillance Networking Solutions</strong>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Surveillance Systems Installation:</strong> Advanced security systems for homes and businesses.</li>
+                            <li><strong>Network Configuration:</strong> Reliable CCTV networking to ensure real-time monitoring and data integrity.</li>
+                            <li><strong>Maintenance and Upgrades:</strong> Ensuring your security systems remain up-to-date and functional.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Services End -->
+
+<!-- Why Choose Us Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h3 class="text-primary text-center" ><strong>Why Choose Vimal Solar?</strong></h3><br>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-4 col-12 why-us-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black " style="text-align: left; font-size: 1rem;">
+                    <li><strong>Expertise:</strong> 5 Years of experience in solar energy and CCTV solutions.</li>
+                    <li><strong>Quality Products:</strong> We partner with leading brands to offer the best products in the market.</li>
+                    <li><strong>Tailored Solutions:</strong> Customized services designed to meet your unique requirements.</li>
+                    <li><strong>After-Sales Support:</strong> Dedicated customer service for maintenance and troubleshooting.</li>
+                    <li><strong>Affordable Pricing:</strong> Cost-effective solutions without compromising on quality.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/why-choose-us.png' %}" class="img-fluid rounded" alt="Why Choose Us" style="height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Why Choose Us End -->
+
+<!-- Our Achievements Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h3 class="text-primary text-center"><strong>Our Achievements</strong></h3>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-5 col-12 animated slideInLeft" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/Achievement.png' %}" class="img-fluid rounded" alt="Achievements" style="height: 450px;">
+            </div>
+            <div class="col-lg-4 col-12 achievements-text py-4 animated slideInRight" data-wow-delay="0.2s">
+                <ul class="text-black text-left" style="text-align: left; font-size: 1rem;">
+                    <li><strong>500+</strong> successful solar energy system installations across residential and commercial properties.</li>
+                    <li><strong>100+</strong> businesses and institutions trust us for their CCTV networking needs.</li>
+                    <li>Recognized for outstanding customer service and technical expertise in renewable energy and security systems.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Achievements End -->
+
+<!-- Future Goals Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h1 class="text-primary text-center" style="font-size: 2rem;"><strong>Future Goals</strong></h1>
+        <p class="text-black" style="font-size: 1rem;">
+            Our aspirations for the future include:
+        </p>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-7 col-12 future-goals-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black" style="text-align: left; font-size: 1rem;">
+                    <li>Expanding our solar energy solutions to reach underserved communities.</li>
+                    <li>Developing smart integration systems that combine solar energy and security technologies.</li>
+                    <li>Continuing to innovate and deliver exceptional service to our clients.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-goals.png' %}" class="img-fluid rounded" alt="Future Goals" style="height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Future Goals End -->
+
+<style>
+    /* About Section Styling */
+    .about-image img {
+        max-width: 100%;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .about-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+        background-color: #4292ed;
+    }
+</style>
+
+
+
+<footer class="footer bg-dark text-white pt-3 pb-6">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <!-- Logo Section -->
+            <div class="col-md-3 mb-1">
+                <div class="d-flex align-items-center"><a href="{% url 'about'  %}">
+                    <img src="{% static 'main/img/favicon.png' %}" alt="Brand Logo" style="width: 100px;">
+                    <img src="{% static 'main/img/Text.png' %}" class="position-relative d-none d-md-block" alt="Brand Logo" style="width: 100%; height: 150px; margin-inline-start: 0px;">
+                    <br></a>
+                </div>
+                <p class="d-none d-md-block" style="font-family: 'Times New Roman', Times, serif;">
+                    Vimal Solar is dedicated to providing high-quality solar solutions, ensuring sustainable energy for both residential and commercial needs. We offer reliable products and services to help you reduce energy costs while contributing to a greener future.
+                </p>
+            </div>
+            
+
+            <!-- Quick Links Section -->
+            <div class="col-lg-2 col-md-3 mb-4">
+                <h5 class="text-uppercase">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index' %}" class="text-white-50 text-decoration-none">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="text-white-50 text-decoration-none">About</a></li>
+                    <li><a href="{% url 'project' %}" class="text-white-50 text-decoration-none">Projects</a></li>
+                    <li><a href="{% url 'service' %}" class="text-white-50 text-decoration-none">Service</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-white-50 text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Address Section -->
+            <div class="col-md-3 mb-1">
+                <h5 class="text-uppercase">Connect with us..</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50 text-decoration-none">Address: 7A/1, Madangeeswar Koil Street, Hospital Road, Near CSI Hospital, Kanchipuram - 631 502</a></li>
+                    <li><a href="mailto:vimalsolarshop8@gmail.com" class="text-white-50 text-decoration-none">Email: vimalsolarshop8@gmail.com</a></li>
+                    <li><a href="tel:+916385668684" class="text-white-50 text-decoration-none">Phone: +91 6385668684</a></li>
+                </ul>
+            </div>
+
+            <!-- Report Us Section -->
+            <div class="col-lg-2 col-md-3 mb-4 d-none d-md-block">
+                <h5 class="text-uppercase">Report Us !</h5>
+                <!-- Input field for submitting complaints -->
+                <input type="text" placeholder="Enter your feedback" class="form-control mt-2" style="height: 100px; width: 250px;">
+
+                <!-- Submit button for complaint submission -->
+                <button class="btn btn-primary mt-2">Submit</button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="bg-white-50">
+
+        <!-- Footer Bottom -->
+        <div class="d-flex flex-column text-center text-md-start flex-md-row justify-content-between align-items-center">
+            <!-- Copyright Section -->
+            <p class="mb-2 text-white-50">
+                &copy; <span id="current-year"></span> Vimal Solar. All Rights Reserved.
+            </p>
+        
+            <!-- Social Media Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center mb-1 d-none d-md-block">
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/vimalsolar_kpm/?utm_source=ig_web_button_share_sheet" class="text-white-50 me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <!-- Footer Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center d-none d-md-block">
+                <a href="#" class="text-white-50 mx-2">Terms of Service</a>
+                <a href="#" class="text-white-50 mx-2">Privacy Policy</a>
+                <a href="#" class="text-white-50 mx-2">Sitemap</a>
+            </div>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+<!-- JavaScript to display current year -->
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
+
+
+
+
+
+<!-- CSS for Responsive Design -->
+<style>
+    /* Mobile View Adjustments */
+    @media (max-width: 768px) {
+        .footer .row {
+            text-align: center; /* Center the text for mobile */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 1 !important; /* Remove left margin for mobile */
+        }
+
+        .footer .d-flex {
+            flex-direction: column; /* Stack the social links and other items vertically */
+            align-items: center;
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 0rem !important; /* Reduce space between items */
+        }
+    }
+
+    /* Tablet and PC View Adjustments */
+    @media (min-width: 768px) {
+        .footer .row {
+            text-align: left; /* Align text to the left on larger screens */
+        }
+
+        .footer .d-flex {
+            flex-direction: row; /* Place items side by side on larger screens */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 50px; /* Add margin to left columns for PC */
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 1rem !important; /* Add spacing between items */
+        }
+    }
+</style>
+
+
+    <!-- Back to Top -->
+    <a href="{% url 'index' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Bootstrap Bundle JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+    $(document).ready(function () {
+        // Toggle conditional sections based on service type
+        $('#service_type').on('change', function () {
+            let selectedType = $(this).val();
+            if (selectedType === 'solar') {
+                $('#solar_section').addClass('active').show();
+                $('#cctv_section').removeClass('active').hide();
+            } else if (selectedType === 'cctv') {
+                $('#cctv_section').addClass('active').show();
+                $('#solar_section').removeClass('active').hide();
+            } else {
+                $('#solar_section, #cctv_section').removeClass('active').hide();
+            }
+        });
+
+        // AJAX form submission
+        $('#enquiryForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Form validation
+            if (!this.checkValidity()) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // AJAX request
+            $.ajax({
+                type: 'POST',
+                url: window.location.href,
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (response) {
+                    alert(response.message);
+                    $('#enquiryForm')[0].reset();
+                    $('#solar_section, #cctv_section').removeClass('active').hide();
+                },
+                error: function (xhr) {
+                    alert(`Error: ${xhr.responseJSON.message || 'Unknown error'}`);
+                }
+            });
+        });
+
+        // Sticky Navbar Scroll Effect
+        const navbar = document.querySelector('.sticky-nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize Carousel
+        var carousel = new bootstrap.Carousel(document.querySelector('.carousel'), {
+            interval: 5000,
+            ride: 'carousel'
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1 // Element is considered visible when 10% of it is in view
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+
+                if (entry.isIntersecting) {
+                    // Play the animation when the section is in view
+                    element.classList.add('fadeIn', element.dataset.animation);
+
+                    // Unobserve to stop further animations when scrolling back
+                    observer.unobserve(element);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Attach observer to all elements with the `wow` class
+        document.querySelectorAll('.wow').forEach((element) => {
+            const animationType = element.classList.contains('slideInRight') ? 'slideInRight' : 'slideInLeft';
+            element.dataset.animation = animationType;
+
+            // Ensure animations reset after the first play
+            element.classList.add('animated');
+            observer.observe(element);
+        });
+    });
+</script>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'main/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'main/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'main/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'main/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'main/lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'main/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>

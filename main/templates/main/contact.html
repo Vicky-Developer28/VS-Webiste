@@ -1,0 +1,983 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", initial-scale="0.8">
+    <meta name="keywords" content="Vimal Solar">
+    <meta name="description" content="Vimal Solar">
+    <title>Vimal Solar</title>
+    
+    <!-- Favicon -->
+    <link href="{% static 'main/img/favicon.png' %}" rel="icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Third-party Library Stylesheets -->
+    <link href="{% static 'main/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'main/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom Stylesheets -->
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+
+    <!-- Custom JavaScript -->
+    <script src="{% static 'main/js/main.js' %}"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+    <style>   
+            
+    .footer {
+        font-size: 0.9rem;
+    }
+
+    .footer h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .footer ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    .footer ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer ul li a:hover {
+        color: #0d6efd;
+    }
+
+    .footer hr {
+        border-top: 1px solid #666;
+    }
+
+    .footer .text-white-50:hover {
+        color: #fff;
+    }
+
+    .footer img {
+        display: block;
+        margin: 0 auto;
+    }
+
+        
+    .form body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-container {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    .form-control:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 5px rgba(37, 117, 252, 0.3);
+    }
+
+    .form-section {
+        display: none;
+        margin-top: 15px;
+    }
+
+    .form-section.active {
+        display: block;
+    }
+
+    .form-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        background: #2575fc;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .form-btn:hover {
+        background: #1c5bb6;
+        transform: translateY(-2px);
+    }
+
+
+        /* General Styles */
+        body {
+            overflow-x: hidden;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffffff;
+            margin-top: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sticky Navbar */
+        .sticky-nav {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
+            height: 230px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Navbar adjustments */
+        .navbar {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .navbar.navbar-expand-lg {
+            height: 80px;
+        }
+
+        /* Navbar Brand (logo) */
+        .navbar-brand img {
+            width: 250px;
+            height: auto;
+        }
+
+        /* Navbar Toggler Icon */
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        /* Nav-item button adjustments */
+        .nav-item.nav-link.btn {
+            height: 40px;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 5px;
+        }
+
+        /* Nav-item link adjustments */
+        .nav-item.nav-link {
+            color: #000;
+            background-color: transparent;
+            border: 1px solid #0b5ed7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-item.nav-link.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .nav-item.nav-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Dropdown menu styles */
+        .navbar-nav .dropdown-menu {
+            background-color: #f9f9f9;
+            color: #868686;
+        }
+
+        .dropdown-item {
+            color: #000000;
+        }
+
+        .dropdown-item:hover {
+            background-color: #a7a7a7;
+        }
+
+        /* Carousel image settings */
+        .carousel img {
+            object-fit: cover;
+        }
+
+        /* Large screen adjustments */
+        @media (min-width: 992px) {
+            .d-none.d-lg-flex {
+                display: flex !important;
+            }
+        }
+
+        /* Button Adjustments */
+        .navbar-nav .nav-item {
+            margin-left: 10px;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: white;
+            background-color: #007bff;
+        }
+
+
+        /* Column and row alignment */
+        .container-fluid {
+            text-align: center;
+            padding: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .col-lg-7,
+        .col-lg-5 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .col-lg-7 .d-inline-flex,
+        .col-lg-5 .d-inline-flex {
+            align-items: center;
+        }
+
+        .col-lg-5 .d-inline-flex {
+            gap: 10px;
+        }
+
+        .navbar .fa {
+            font-size: 18px;
+        }
+        .btn-square {
+            padding: 10px;
+            margin-left: 10px;
+        }
+
+        .btn-link {
+            background-color: transparent;
+            border: none;
+        }
+
+        .btn-link:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+        }
+
+
+        /*** Service ***/
+        .service-item {
+            box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+        }
+
+        .service-icon {
+            position: relative;
+            margin: -50px 0 25px 0;
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            background: #FFFFFF;
+            border-radius: 100px;
+            box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+            transition: .5s;
+        }
+
+        .service-item:hover .service-icon {
+            color: #00000000;
+            background: var(--primary);
+        }
+        .slide-bck-center {
+            -webkit-animation: slide-bck-center 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 100ms forwards;
+            animation: slide-bck-center 0.5s cubic-bezier(0.470, 0.000, 0.745, 0.715) 100ms forwards;
+        }
+        @-webkit-keyframes slide-bck-center {
+        0% {
+            -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+        }
+        100% {
+            -webkit-transform: translateZ(-400px);
+                    transform: translateZ(-400px);
+        }
+        }
+        @keyframes slide-bck-center {
+        0% {
+            -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+        }
+        100% {
+            -webkit-transform: translateZ(-400px);
+                    transform: translateZ(-400px);
+        }
+        }
+
+        .shadow-drop-center {
+            -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1ms both;
+            animation: shadow-drop-center 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1ms both;
+        }
+
+        @-webkit-keyframes shadow-drop-center {
+        0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+            -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+        }
+        @keyframes shadow-drop-center {
+        0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+                    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+            -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+                    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+        }
+
+
+        @-webkit-keyframes slide-left {
+        0% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        100% {
+            -webkit-transform: translateX(-100px);
+                    transform: translateX(-100px);
+        }
+        }
+        @keyframes slide-left {
+        0% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        100% {
+            -webkit-transform: translateX(-100px);
+                    transform: translateX(-100px);
+        }
+        }
+
+
+        .container-xxl {
+    background-color: #f8f9fa;
+    padding: 6rem 2rem;
+    border-radius: 8px;
+        }
+
+        .text-primary {
+            color: #007bff;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        h4 {
+            letter-spacing: 1px;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-container .portfolio-item {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-container .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%; /* Maintain aspect ratio */
+            border-radius: 8px;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%; /* Maintain aspect ratio */
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .portfolio-img:hover .portfolio-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .portfolio-btn .btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: none;
+        }
+
+        .portfolio-btn .btn:hover {
+            background-color: #007bff;
+        }
+
+        .portfolio-item .pt-3 {
+            text-align: center;
+        }
+
+        .portfolio-item p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #007bff;
+        }
+
+        .portfolio-item h5 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-item {
+                margin-bottom: 2rem;
+            }
+
+            .portfolio-img {
+                height: auto; /* Maintain aspect ratio */
+            }
+        }
+
+        .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .carousel-control-prev-icon:hover,
+        .carousel-control-next-icon:hover {
+            background-color: #007bff;
+        }
+        /* Hover effect on images */
+        .project-images img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Button Hover Effect */
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Media Query for Small Screens */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+            }
+        }
+        /* Adjust carousel for mobile screens */
+@media (max-width: 768px) {
+    .carousel-image {
+        height: auto; /* Maintain original aspect ratio */
+        max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
+        width: 100%; /* Full width */
+        object-fit: cover; /* Adjust image content fit */
+    }
+}
+    </style>
+    <!-- Navbar Starts -->
+    <nav class="navbar navbar-expand-lg sticky-nav position-absolute w-100 z-index-1">
+        <div class="container py-1">
+            <!-- Logo -->
+            <a href="{% url 'index' %}" class="navbar-brand" style="font-family: 'Montserrat', sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-top: 10px;">
+                <img src="{% static 'main/img/favicon.png' %}" alt="Logo" style="width: 60px; height: 60px;" class="navbar-brand me-2"> Vimal Solar
+            </a>
+            
+            <!-- Menu Icon -->
+            <button class="navbar-toggler  navbar-toggler-icon" type="button" id="sidebarToggle" id="toggleIcon">
+                
+            </button>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const navbarNav = document.getElementById("navbarNav");
+    const toggleIcon = document.getElementById("toggleIcon");
+
+    sidebarToggle.addEventListener("click", function () {
+        const isCollapsed = navbarNav.classList.contains("show");
+
+        // Toggle the sidebar
+        navbarNav.classList.toggle("show");
+
+        // Change icon
+        if (isCollapsed) {
+            toggleIcon.classList.remove("bi-x");
+            toggleIcon.classList.add("bi-list");
+        } else {
+            toggleIcon.classList.remove("bi-list");
+            toggleIcon.classList.add("bi-x");
+        }
+    });
+});
+
+            </script>
+
+            
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav" data-bs-auto-close="false">
+                <ul class="navbar-nav ms-auto">
+                    <a href="{% url 'index' %}" class="btn nav-item nav-link  rounded-pill text-black btn-outline-light">Home</a>
+                    <a href="{% url 'about' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light">About</a>
+                    <a href="{% url 'service' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light">Services</a>
+                    <a href="{% url 'project' %}" class="btn nav-item nav-link active rounded-pill text-white  btn-outline-light">Project</a>
+                    <a href="{% url 'contact' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light">Contact</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Ends -->
+
+
+<!-- Contact Start -->
+<div class="container-fluid bg-light overflow-hidden px-lg-0 py-5" style="margin: 6rem 0;">
+    <div class="container contact px-lg-0">
+        <div class="row g-0 mx-lg-0">
+            <!-- Contact Form Section -->
+            <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="p-lg-5 ps-lg-0">
+                    <h6 class="text-primary">Contact Us</h6>
+                    <h1 class="mb-4">Feel Free To Contact Us</h1>
+                    <p class="mb-4">We value your feedback and queries. Please reach out to us using the form below, and our team will get back to you as soon as possible.</p>
+                    <form method="POST" id="Enquiry" novalidate autocomplete="on">
+                        {% csrf_token %}
+
+                        <!-- Name Input -->
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" maxlength="25" required>
+                        </div>
+
+                        <!-- Phone Number Input -->
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number 1:</label>
+                            <input type="tel" class="form-control" id="phone_number_1" name="phone_number_1" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number_2">Phone Number 2 (Optional):</label>
+                            <input type="tel" class="form-control" id="phone_number_2" name="phone_number_2">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+
+                        <!-- Service Type Selection -->
+                        <div class="form-group">
+                            <label for="service_type">Service Type:</label>
+                            <select class="form-control" id="service_type" name="service_type" required>
+                                <option value="select_service">Select Service</option>
+                                <option value="solar">Solar</option>
+                                <option value="cctv">CCTV</option>
+                                <option value="Network System and Networking">Network System and Networking</option>
+                            </select>
+                        </div>
+
+
+                        <!-- Conditional Solar Section -->
+                        <div id="solar_section" class="form-section" style="display: none;">
+                            <div class="form-group">
+                                <label for="solar_budget">Budget Range:</label>
+                                <input type="text" class="form-control" id="solar_budget" name="solar_budget" required>
+                            </div>
+                            <!-- Installation Address Input -->
+                            <div class="form-group">
+                                <label for="installation_address" required>Installation Address:</label>
+                                <textarea class="form-control" id="installation_address" name="installation_address" required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Conditional CCTV Section -->
+                        <div id="cctv_section" class="form-section" style="display: none;">
+                            <div class="form-group">
+                                <label for="premises_type">Type of Premises:</label>
+                                <select class="form-control" id="premises_type" name="premises_type" required>
+                                    <option value=""></option>
+                                    <option value="Home">Home</option>
+                                    <option value="Office">Office</option>
+                                    <option value="Retail Store">Retail Store</option>
+                                    <option value="wWrehouse">Warehouse</option>
+                                    <option value="Factory">Factory</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="num_cameras">Number of Cameras:</label>
+                                <input type="number" class="form-control" id="num_cameras" name="num_cameras" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget_range">Budget Range:</label>
+                                <input type="text" class="form-control" id="budget_range" name="budget_range" maxlength="8" required>
+                            </div>
+                            <!-- Installation Address Input -->
+                            <div class="form-group">
+                                <label for="installation_address" >Installation Address:</label>
+                                <textarea class="form-control" id="installation_address" name="installation_address" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="solar_comments">Additional Comments:</label>
+                            <textarea class="form-control" id="solar_comments" name="solar_comments"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Google Map Section -->
+            <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1736992947974!6m8!1m7!1s_uNUmXs-HHU2d6phyEW-AQ!2m2!1d12.8354347501125!2d79.70785654492104!3f94.50817188597365!4f-4.151770003353619!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+
+
+<footer class="footer bg-dark text-white pt-3 pb-6">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <!-- Logo Section -->
+            <div class="col-md-3 mb-1">
+                <div class="d-flex align-items-center"><a href="{% url 'about'  %}">
+                    <img src="{% static 'main/img/favicon.png' %}" alt="Brand Logo" style="width: 100px;">
+                    <img src="{% static 'main/img/Text.png' %}" class="position-relative d-none d-md-block" alt="Brand Logo" style="width: 100%; height: 150px; margin-inline-start: 0px;">
+                    <br></a>
+                </div>
+                <p class="d-none d-md-block" style="font-family: 'Times New Roman', Times, serif;">
+                    Vimal Solar is dedicated to providing high-quality solar solutions, ensuring sustainable energy for both residential and commercial needs. We offer reliable products and services to help you reduce energy costs while contributing to a greener future.
+                </p>
+            </div>
+            
+
+            <!-- Quick Links Section -->
+            <div class="col-lg-2 col-md-3 mb-4">
+                <h5 class="text-uppercase">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index' %}" class="text-white-50 text-decoration-none">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="text-white-50 text-decoration-none">About</a></li>
+                    <li><a href="{% url 'project' %}" class="text-white-50 text-decoration-none">Projects</a></li>
+                    <li><a href="{% url 'service' %}" class="text-white-50 text-decoration-none">Service</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-white-50 text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Address Section -->
+            <div class="col-md-3 mb-1">
+                <h5 class="text-uppercase">Connect with us..</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50 text-decoration-none">Address: 7A/1, Madangeeswar Koil Street, Hospital Road, Near CSI Hospital, Kanchipuram - 631 502</a></li>
+                    <li><a href="mailto:vimalsolarshop8@gmail.com" class="text-white-50 text-decoration-none">Email: vimalsolarshop8@gmail.com</a></li>
+                    <li><a href="tel:+916385668684" class="text-white-50 text-decoration-none">Phone: +91 6385668684</a></li>
+                </ul>
+            </div>
+
+            <!-- Report Us Section -->
+            <div class="col-lg-2 col-md-3 mb-4 d-none d-md-block">
+                <h5 class="text-uppercase">Report Us !</h5>
+                <!-- Input field for submitting complaints -->
+                <input type="text" placeholder="Enter your feedback" class="form-control mt-2" style="height: 100px; width: 250px;">
+
+                <!-- Submit button for complaint submission -->
+                <button class="btn btn-primary mt-2">Submit</button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="bg-white-50">
+
+        <!-- Footer Bottom -->
+        <div class="d-flex flex-column text-center text-md-start flex-md-row justify-content-between align-items-center">
+            <!-- Copyright Section -->
+            <p class="mb-2 text-white-50">
+                &copy; <span id="current-year"></span> Vimal Solar. All Rights Reserved.
+            </p>
+        
+            <!-- Social Media Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center mb-1 d-none d-md-block">
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/vimalsolar_kpm/?utm_source=ig_web_button_share_sheet" class="text-white-50 me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <!-- Footer Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center d-none d-md-block">
+                <a href="#" class="text-white-50 mx-2">Terms of Service</a>
+                <a href="#" class="text-white-50 mx-2">Privacy Policy</a>
+                <a href="#" class="text-white-50 mx-2">Sitemap</a>
+            </div>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+<!-- JavaScript to display current year -->
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
+
+
+
+
+
+<!-- CSS for Responsive Design -->
+<style>
+    /* Mobile View Adjustments */
+    @media (max-width: 768px) {
+        .footer .row {
+            text-align: center; /* Center the text for mobile */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 1 !important; /* Remove left margin for mobile */
+        }
+
+        .footer .d-flex {
+            flex-direction: column; /* Stack the social links and other items vertically */
+            align-items: center;
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 0rem !important; /* Reduce space between items */
+        }
+    }
+
+    /* Tablet and PC View Adjustments */
+    @media (min-width: 768px) {
+        .footer .row {
+            text-align: left; /* Align text to the left on larger screens */
+        }
+
+        .footer .d-flex {
+            flex-direction: row; /* Place items side by side on larger screens */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 50px; /* Add margin to left columns for PC */
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 1rem !important; /* Add spacing between items */
+        }
+    }
+</style>
+
+
+    <!-- Back to Top -->
+    <a href="{% url 'index' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Bootstrap Bundle JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+    $(document).ready(function () {
+        // Toggle conditional sections based on service type
+        $('#service_type').on('change', function () {
+            let selectedType = $(this).val();
+            if (selectedType === 'solar') {
+                $('#solar_section').addClass('active').show();
+                $('#cctv_section').removeClass('active').hide();
+            } else if (selectedType === 'cctv') {
+                $('#cctv_section').addClass('active').show();
+                $('#solar_section').removeClass('active').hide();
+            } else {
+                $('#solar_section, #cctv_section').removeClass('active').hide();
+            }
+        });
+
+        // AJAX form submission
+        $('#enquiryForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Form validation
+            if (!this.checkValidity()) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // AJAX request
+            $.ajax({
+                type: 'POST',
+                url: window.location.href,
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (response) {
+                    alert(response.message);
+                    $('#enquiryForm')[0].reset();
+                    $('#solar_section, #cctv_section').removeClass('active').hide();
+                },
+                error: function (xhr) {
+                    alert(`Error: ${xhr.responseJSON.message || 'Unknown error'}`);
+                }
+            });
+        });
+
+        // Sticky Navbar Scroll Effect
+        const navbar = document.querySelector('.sticky-nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize Carousel
+        var carousel = new bootstrap.Carousel(document.querySelector('.carousel'), {
+            interval: 5000,
+            ride: 'carousel'
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1 // Element is considered visible when 10% of it is in view
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+
+                if (entry.isIntersecting) {
+                    // Play the animation when the section is in view
+                    element.classList.add('fadeIn', element.dataset.animation);
+
+                    // Unobserve to stop further animations when scrolling back
+                    observer.unobserve(element);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Attach observer to all elements with the `wow` class
+        document.querySelectorAll('.wow').forEach((element) => {
+            const animationType = element.classList.contains('slideInRight') ? 'slideInRight' : 'slideInLeft';
+            element.dataset.animation = animationType;
+
+            // Ensure animations reset after the first play
+            element.classList.add('animated');
+            observer.observe(element);
+        });
+    });
+</script>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'main/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'main/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'main/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'main/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'main/lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'main/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>

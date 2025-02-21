@@ -1,0 +1,298 @@
+:root {
+    --primary: #00b3ff;
+    --light: #F6F7F8;
+    --dark: #1A2A36;
+}
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Font Weights */
+.fw-medium { font-weight: 500 !important; }
+.fw-bold { font-weight: 700 !important; }
+.fw-black { font-weight: 900 !important; }
+
+
+
+/* Back-to-Top Button */
+.back-to-top {
+    position: fixed;
+    right: 45px;
+    bottom: 45px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+/* Spinner */
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+}
+
+
+/* Buttons */
+
+.btn {
+    font-weight: 500;
+    transition: all 0.5s;
+}
+
+.btn.btn-primary,
+.btn.btn-outline-primary:hover {
+    color: #FFFFFF;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    aspect-ratio: 1; /* Ensures a square shape */
+}
+
+.btn-square { width: 38px; height: 38px; }
+.btn-sm-square { width: 32px; height: 32px; }
+.btn-lg-square { width: 48px; height: 48px; }
+
+
+
+/* Navbar */
+
+.navbar.sticky-top {
+    top: -100px;
+    transition: top 0.5s ease;
+}
+
+.navbar .navbar-brand,
+.navbar a.btn {
+    height: 75px;
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 30px;
+    padding: 25px 0;
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar .dropdown-toggle::after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 8px;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+
+/* Sections (About, Service, Feature, etc.) */
+
+/* About Section */
+@media (min-width: 992px) {
+    .about-text {
+        padding-right: calc(((100% - 960px) / 2) + 0.75rem);
+    }
+}
+
+/* Service Section */
+.service-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+}
+
+.service-icon {
+    position: relative;
+    margin: -50px 0 25px 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    background: #FFFFFF;
+    border-radius: 100px;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s;
+}
+
+.service-item:hover .service-icon {
+    color: #FFFFFF;
+    background: var(--primary);
+}
+
+/* Portfolio */
+
+
+#portfolio-flters li {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.5s;
+    border-bottom: 2px solid transparent;
+}
+
+#portfolio-flters li:hover,
+#portfolio-flters li.active {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.portfolio-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-img::before,
+.portfolio-img::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: var(--dark);
+    transition: all 0.5s;
+}
+
+.portfolio-img::before { left: 50%; }
+.portfolio-img::after { right: 50%; }
+
+.portfolio-item:hover .portfolio-img::before,
+.portfolio-item:hover .portfolio-img::after {
+    width: 51%;
+}
+
+.portfolio-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-btn {
+    opacity: 1;
+    transition-delay: 0.3s;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  */
+/* Footer */
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    color: #9B9B9B;
+    border: 1px solid #9B9B9B;
+    border-radius: 38px;
+    transition: all 0.3s ease;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+    border-color: var(--light);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #9B9B9B;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.footer .btn.btn-link:hover {
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    border-top: 1px solid rgba(256, 256, 256, 0.1);
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  */
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .header-carousel {
+        min-height: 300px;
+    }
+
+    .portfolio-img {
+        height: auto;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  */
+/* Animations */
+
+@keyframes slide-bck-center {
+    0% { transform: translateZ(0); }
+    100% { transform: translateZ(-400px); }
+}
+
+@keyframes shadow-drop-center {
+    0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+    100% { box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.35); }
+}
+
+@keyframes slide-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
+}

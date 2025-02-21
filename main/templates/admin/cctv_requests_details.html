@@ -1,0 +1,547 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'admin/assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'admin/assets/img/faicon.png' %}">
+  <title> Admin Profile Page</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+  
+  <!-- Nucleo Icons -->
+  <link href="{% static 'admin/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static 'admin/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqBxa3b6Zg1v7Kpv/0b8X7vZPp4M2X9YlF5W+J0n2Iev5" crossorigin="anonymous">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.css' %}" rel="stylesheet" />
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.min.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <style>
+    body{
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+<!-- Side Bar Starts -->
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-white my-2" id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand px-4 py-3 m-0" href="" target="_blank">
+      <img src="admin/assets/img/logo-ct-dark.png" class="navbar-brand-img" width="26" height="26" alt="main_logo">
+      <span class="ms-1 text-sm text-dark"></span>
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0 mb-2">
+  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active bg-gradient-dark text-white" href="{% url 'dashboard' %}">
+          <i class="material-symbols-rounded opacity-5">dashboard</i>
+          <span class="nav-link-text ms-1">Dashboard</span>
+        </a>
+      </li><br>
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Pages</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{% url 'project-be' %}">
+          <i class="material-symbols-rounded opacity-5">info</i>
+          <span class="nav-link-text ms-1">Project</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{% url 'about' %}">
+          <i class="material-symbols-rounded opacity-5">info</i>
+          <span class="nav-link-text ms-1">Project</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{% url 'about' %}">
+          <i class="material-symbols-rounded opacity-5">info</i>
+          <span class="nav-link-text ms-1">Project</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="{% url 'about' %}">
+          <i class="material-symbols-rounded opacity-5">info</i>
+          <span class="nav-link-text ms-1">Project</span>
+        </a>
+      </li>
+      <li class="nav-item sidenav-footer position-absolute w-100 bottom-10">
+          <a class="nav-link text-dark " href="{% url 'profile' %}">
+            <i class="material-symbols-rounded opacity-5">person</i>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
+        <li class="nav-item sidenav-footer position-absolute w-100 bottom-5">
+          <a class="nav-link text-dark" href="#">
+            <i class="material-symbols-rounded opacity-5">settings</i>
+            <span class="nav-link-text ms-1">Settings</span>
+          </a>
+        </li>
+    </ul>
+    
+      </div>
+      </div>
+  </div>
+</aside>
+<!-- Side Bar Ends -->
+ <!-- Navbar -->
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-3 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+  <div class="container-fluid py-1 px-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+        <li class="breadcrumb-item text-sm">
+          <a class="opacity-5 text-dark" href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">CCTV Enquiries</li>
+      </ol>
+    </nav>
+    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+      <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+      </div>
+      
+      <ul class="navbar-nav d-flex align-items-center justify-content-end">
+        <li class="nav-item px-3 d-flex align-items-center">
+          <p id="time-date" class="m-0 text-center"></p> <!-- Placeholder for time and date -->
+
+          <script>
+            function updateDateTime() {
+                const currentDate = new Date();
+        
+                // Format the date as "15 Dec 2025"
+                const formattedDate = currentDate.toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+        
+                // Format the time as "01:26 PM"
+                const formattedTime = currentDate.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+        
+                document.getElementById('time-date').innerHTML = `${formattedDate}, ${formattedTime}`;
+            }
+        
+            setInterval(updateDateTime, 1000); // Update every second
+            updateDateTime(); // Initial call to display time immediately
+        </script>
+        </li>        
+        <li class="nav-item px-3 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0" >
+            <i class="material-symbols-rounded fixed-plugin-button-nav">settings</i>
+          </a>
+        </li>
+        <li class="nav-item dropdown pe-3 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="material-symbols-rounded">notifications</i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+            <li class="mb-2">
+              <a class="dropdown-item border-radius-md" href="javascript:;">
+                <div class="d-flex py-1">
+                  <div class="my-auto">
+                    <img src="{% static 'admin/assets/img/team-2.jpg' %}" class="avatar avatar-sm me-3">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="text-sm font-weight-normal mb-1">
+                      <span class="font-weight-bold">New message</span> from Laur
+                    </h6>
+                    <p class="text-xs text-secondary mb-0">
+                      <i class="fa fa-clock me-1"></i>
+                      13 minutes ago
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="mb-2">
+              <a class="dropdown-item border-radius-md" href="javascript:;">
+                <div class="d-flex py-1">
+                  <div class="my-auto">
+                    <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark me-3">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="text-sm font-weight-normal mb-1">
+                      <span class="font-weight-bold">New album</span> by Travis Scott
+                    </h6>
+                    <p class="text-xs text-secondary mb-0">
+                      <i class="fa fa-clock me-1"></i>
+                      1 day
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item border-radius-md" href="javascript:;">
+                <div class="d-flex py-1">
+                  <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
+                    <svg width="12px" height="12px" viewBox="0 0 43 36" xmlns="http://www.w3.org/2000/svg">
+                      <g fill="none" fill-rule="evenodd">
+                        <g transform="translate(-2169 -745)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716 291)">
+                            <g transform="translate(453 454)">
+                              <path class="color-background" d="M43,10.748 L43,3.583 C43,1.604 41.396,0 39.417,0 L3.583,0 C1.604,0 0,1.604 0,3.583 L0,10.748 L43,10.748 Z" opacity="0.594"></path>
+                              <path class="color-background" d="M0,16.125 L0,32.25 C0,34.23 1.604,35.833 3.583,35.833 L39.417,35.833 C41.396,35.833 43,34.23 43,32.25 L43,16.125 L0,16.125 Z M19.708,26.875 L7.167,26.875 L7.167,23.292 L19.708,23.292 L19.708,26.875 Z M35.833,26.875 L28.667,26.875 L28.667,23.292 L35.833,23.292 L35.833,26.875 Z"></path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="text-sm font-weight-normal mb-1">
+                      Payment successfully completed
+                    </h6>
+                    <p class="text-xs text-secondary mb-0">
+                      <i class="fa fa-clock me-1"></i>
+                      2 days
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+            <i class="material-symbols-rounded">account_circle</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <!-- End Navbar -->
+<!-- Main Content for Solar Requests Table -->
+<!-- Table Start -->
+<div class="data" style="margin-left: 10px; margin-top: 50px;">
+  <h4 class="position-fixed">CCTV Requests Details 
+    <a href="{% url 'export_requests_excel' %}?type=cctv" class="btn btn-primary" style="float: right; margin-left: 1250px;">Export</a>
+  </h4>
+  
+  <table class="table table-striped position-absolute" style="margin-right: 100px; margin-top: 60px;">
+    <thead>
+      <tr>
+        <th>S No</th>
+        <th>Time</th>
+        <th>Name</th>
+        <th>Phone Number 1</th>
+        <th>Phone Number 2</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Premises Type</th>
+        <th>Number of Cameras</th>
+        <th>Budget Range</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for request in cctv_requests %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ request.timestamp }}</td>
+          <td>{{ request.name }}</td>
+          <td>{{ request.phone_number_1 }}</td>
+          <td>{{ request.phone_number_2 }}</td>
+          <td>{{ request.email }}</td>
+          <td>{{ request.installation_address }}</td>
+          <td>{{ request.premises_type }}</td>
+          <td>{{ request.num_cameras }}</td>
+          <td>{{ request.budget_range }}</td>
+          <td>
+            <form action="{% url 'delete_cctv_request' request.id %}" method="POST" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger" style="padding: 5px 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </button>
+            </form>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="16">No CCTV requests found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+   <!-- JavaScript Files -->
+   <script src="{% static 'admin/assets/js/core/popper.min.js' %}"></script>
+   <script src="{% static 'admin/assets/js/core/bootstrap.min.js' %}"></script>
+   <script src="{% static 'admin/assets/js/plugins/perfect-scrollbar.min.js' %}"></script>
+   <script src="{% static 'admin/assets/js/plugins/smooth-scrollbar.min.js' %}"></script>
+   <script src="{% static 'admin/assets/js/plugins/chartjs.min.js' %}"></script>
+ 
+   <script>
+     var ctx = document.getElementById("chart-bars").getContext("2d");
+ 
+     new Chart(ctx, {
+       type: "bar",
+       data: {
+         labels: ["M", "T", "W", "T", "F", "S", "S"],
+         datasets: [{
+           label: "Views",
+           tension: 0.4,
+           borderWidth: 0,
+           borderRadius: 4,
+           borderSkipped: false,
+           backgroundColor: "#43A047",
+           data: [50, 45, 22, 28, 50, 60, 76],
+           barThickness: 'flex'
+         }],
+       },
+       options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+           legend: {
+             display: false,
+           }
+         },
+         interaction: {
+           intersect: false,
+           mode: 'index',
+         },
+         scales: {
+           y: {
+             grid: {
+               drawBorder: false,
+               display: true,
+               drawOnChartArea: true,
+               drawTicks: false,
+               borderDash: [5, 5],
+               color: '#e5e5e5'
+             },
+             ticks: {
+               suggestedMin: 0,
+               suggestedMax: 500,
+               beginAtZero: true,
+               padding: 10,
+               font: {
+                 size: 14,
+                 lineHeight: 2
+               },
+               color: "#737373"
+             },
+           },
+           x: {
+             grid: {
+               drawBorder: false,
+               display: false,
+               drawOnChartArea: false,
+               drawTicks: false,
+               borderDash: [5, 5]
+             },
+             ticks: {
+               display: true,
+               color: '#737373',
+               padding: 10,
+               font: {
+                 size: 14,
+                 lineHeight: 2
+               },
+             }
+           },
+         },
+       },
+     });
+ 
+     var ctx2 = document.getElementById("chart-line").getContext("2d");
+ 
+     new Chart(ctx2, {
+       type: "line",
+       data: {
+         labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+         datasets: [{
+           label: "Sales",
+           tension: 0,
+           borderWidth: 2,
+           pointRadius: 3,
+           pointBackgroundColor: "#43A047",
+           pointBorderColor: "transparent",
+           borderColor: "#43A047",
+           backgroundColor: "transparent",
+           fill: true,
+           data: [120, 230, 130, 440, 250, 360, 270, 180, 90, 300, 310, 220],
+           maxBarThickness: 6
+         }],
+       },
+       options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+           legend: {
+             display: false,
+           },
+           tooltip: {
+             callbacks: {
+               title: function(context) {
+                 const fullMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                 return fullMonths[context[0].dataIndex];
+               }
+             }
+           }
+         },
+         interaction: {
+           intersect: false,
+           mode: 'index',
+         },
+         scales: {
+           y: {
+             grid: {
+               drawBorder: false,
+               display: true,
+               drawOnChartArea: true,
+               drawTicks: false,
+               borderDash: [4, 4],
+               color: '#e5e5e5'
+             },
+             ticks: {
+               display: true,
+               color: '#737373',
+               padding: 10,
+               font: {
+                 size: 12,
+                 lineHeight: 2
+               },
+             }
+           },
+           x: {
+             grid: {
+               drawBorder: false,
+               display: false,
+               drawOnChartArea: false,
+               drawTicks: false,
+               borderDash: [5, 5]
+             },
+             ticks: {
+               display: true,
+               color: '#737373',
+               padding: 10,
+               font: {
+                 size: 12,
+                 lineHeight: 2
+               },
+             }
+           },
+         },
+       },
+     });
+ 
+     var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+ 
+     new Chart(ctx3, {
+       type: "line",
+       data: {
+         labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+         datasets: [{
+           label: "Tasks",
+           tension: 0,
+           borderWidth: 2,
+           pointRadius: 3,
+           pointBackgroundColor: "#43A047",
+           pointBorderColor: "transparent",
+           borderColor: "#43A047",
+           backgroundColor: "transparent",
+           fill: true,
+           data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+           maxBarThickness: 6
+         }],
+       },
+       options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+           legend: {
+             display: false,
+           }
+         },
+         interaction: {
+           intersect: false,
+           mode: 'index',
+         },
+         scales: {
+           y: {
+             grid: {
+               drawBorder: false,
+               display: true,
+               drawOnChartArea: true,
+               drawTicks: false,
+               borderDash: [4, 4],
+               color: '#e5e5e5'
+             },
+             ticks: {
+               display: true,
+               padding: 10,
+               color: '#737373',
+               font: {
+                 size: 14,
+                 lineHeight: 2
+               },
+             }
+           },
+           x: {
+             grid: {
+               drawBorder: false,
+               display: false,
+               drawOnChartArea: false,
+               drawTicks: false,
+               borderDash: [4, 4]
+             },
+             ticks: {
+               display: true,
+               color: '#737373',
+               padding: 10,
+               font: {
+                 size: 14,
+                 lineHeight: 2
+               },
+             }
+           },
+         },
+       },
+     });
+   </script>
+ 
+   <script>
+     var win = navigator.platform.indexOf('Win') > -1;
+     if (win && document.querySelector('#sidenav-scrollbar')) {
+       var options = {
+         damping: '0.5'
+       }
+       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+     }
+   </script>
+ 
+   <!-- Github buttons -->
+   <script async defer src="https://buttons.github.io/buttons.js"></script>
+ 
+   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+   <script src="{% static 'admin/assets/js/material-dashboard.min.js?v=3.2.0' %}"></script>
+ </body>
+ 
+ </html>
+    
