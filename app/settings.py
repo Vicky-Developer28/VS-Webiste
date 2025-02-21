@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vimal-solar-526o.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['vimalsolar.in', 'www.vimalsolar.in', 'localhost' ]
 
 
 # Application definition
