@@ -632,9 +632,9 @@ def get_mysql_storage():
     # Connect to MySQL database
     db_connection = mysql.connector.connect(
         host="localhost",
-        user="root",  # Update with your MySQL username
-        password="5694",  # Update with your MySQL password
-        database="sandisk_db"  # Update with your database name
+        user="admin",
+        password="5694",
+        database="vimalsolar"
     )
     
     cursor = db_connection.cursor()
