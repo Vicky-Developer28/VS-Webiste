@@ -263,7 +263,7 @@ def dashboard(request):
         return redirect("login")
 
     # Generate disk usage chart and stats
-    # chart_data, used, free, total, mysql_used, mysql_total = generate_disk_usage_chart()
+    chart_data, used, free, total, mysql_used, mysql_total = generate_disk_usage_chart()
     enquiry_chart = generate_request_bar_chart()
 
     # Time calculations for last 7 days comparison
@@ -295,12 +295,12 @@ def dashboard(request):
         'visitor_change': visitor_change,
         'chart_data': chart_data,
         'enquiry_chart': enquiry_chart,
-        #'disk_used': round(used, 2),
-        #'disk_free': round(free, 2),
-        #'disk_total': round(total, 2),
-        #'mysql_used': mysql_used,
-        #'mysql_total': mysql_total,
-        #'percent': round((used / total) * 100, 2) if total > 0 else 0,
+        'disk_used': round(used, 2),
+        'disk_free': round(free, 2),
+        'disk_total': round(total, 2),
+        'mysql_used': mysql_used,
+        'mysql_total': mysql_total,
+        'percent': round((used / total) * 100, 2) if total > 0 else 0,
     }
 
     return render(request, 'admin/dashboard.html', context)
