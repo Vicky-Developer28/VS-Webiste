@@ -1,0 +1,701 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'admin/assets/img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'Favicon.png' %}">
+  <script> document.addEventListener("DOMContentLoaded", function() {
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+          link = document.createElement("link");
+          link.rel = "icon";
+          link.type = "image/png";
+          document.head.appendChild(link);
+      }
+      link.href = "/static/Favicon.png?v=" + new Date().getTime(); // Cache busting
+  });
+  </script>
+  <title>Vimal Solar Admin Page</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+  
+  <!-- Nucleo Icons -->
+  <link href="{% static 'admin/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static 'admin/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqBxa3b6Zg1v7Kpv/0b8X7vZPp4M2X9YlF5W+J0n2Iev5" crossorigin="anonymous">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.css' %}" rel="stylesheet" />
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.css.map' %}" rel="stylesheet" />
+  <link id="pagestyle" href="{% static 'admin/assets/css/material-dashboard.min.css' %}" rel="stylesheet" />
+  
+</head>
+<body>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+    }
+    span {
+      font-size: 0.875rem;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      body {
+          display: none;
+      }}
+  </style>
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-radius-lg fixed-start ms-2  bg-white my-2" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-dark opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand px-4 py-3 m-0" href="{% url 'index'%}" target="_blank">
+        <img src="{% static '/admin/assets/Favicon.png' %}" class="navbar-brand-img" width="26" height="26">
+        <span class="ms-1 text-sm text-dark">Vimal Solar</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0 mb-2">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-dark " href="{% url 'dashboard' %}">
+            <i class="material-symbols-rounded opacity-5">dashboard</i>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li><br>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark " href="{% url 'index-be' %}">
+            <i class="material-symbols-rounded opacity-5">info</i>
+            <span class="nav-link-text ms-1">Index</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active bg-gradient-dark text-white" href="{% url 'project-be' %}">
+            <i class="material-symbols-rounded opacity-5">info</i>
+            <span class="nav-link-text ms-1">Project</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="">
+            <i class="material-symbols-rounded opacity-5">info</i>
+            <span class="nav-link-text ms-1">Report</span>
+          </a>
+        </li>
+
+        <li class="nav-item sidenav-footer position-absolute w-100 bottom-1">
+            <a class="nav-link text-dark " href="{% url 'profile' %}">
+              <i class="material-symbols-rounded opacity-5">person</i>
+              <span class="nav-link-text ms-1">Profile</span>
+            </a>
+          </li>
+      </ul>
+      
+        </div>
+        </div>
+    </div>
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+<!-- Navbar -->
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-3 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+  <div class="container-fluid py-1 px-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+        <li class="breadcrumb-item text-sm">
+          <a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+        </li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Main Project Adder > </li>
+      </ol>
+    </nav>
+    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+      <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+      </div>
+      
+      <ul class="navbar-nav d-flex align-items-center justify-content-end">
+        <li class="nav-item px-3 d-flex align-items-center">
+          <p id="time-date" class="m-0 text-center"></p> <!-- Placeholder for time and date -->
+
+          <script>
+            function updateDateTime() {
+                const currentDate = new Date();
+        
+                // Format the date as "15 Dec 2025"
+                const formattedDate = currentDate.toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+        
+                // Format the time as "01:26 PM"
+                const formattedTime = currentDate.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+        
+                document.getElementById('time-date').innerHTML = `${formattedDate}, ${formattedTime}`;
+            }
+        
+            setInterval(updateDateTime, 1000); // Update every second
+            updateDateTime(); // Initial call to display time immediately
+        </script>
+        </li>        
+
+        <li class="nav-item dropdown pe-3 d-flex align-items-center">
+          <!-- Logo & Dropdown Toggle -->
+          <a href="#" class="nav-link text-body font-weight-bold px-0" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'Favicon.png' %}" style="width:36px; height:36px;" class="rounded-circle">
+          </a>
+      
+          <!-- Dropdown Menu -->
+          <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-4" aria-labelledby="dropdownMenuButton">
+              <!-- Dashboard -->
+              <li class="mb-2">
+                  <a class="dropdown-item" href="{% url 'dashboard' %}">
+                      <i class="material-symbols-rounded opacity-5">dashboard</i>
+                      <span class="ms-2">Dashboard</span>
+                  </a>
+              </li>
+      
+              <!-- Profile -->
+              <li class="mb-2">
+                  <a class="dropdown-item" href="{% url 'profile' %}">
+                      <i class="material-symbols-rounded opacity-5">person</i>
+                      <span class="ms-2">Profile</span>
+                  </a>
+              </li>
+      
+              <!-- Settings -->
+              <li class="mb-2">
+                  <a class="dropdown-item">
+                      <i class="material-symbols-rounded opacity-5">settings</i>
+                      <span class="ms-2">Settings</span>
+                  </a>
+              </li>
+      
+              <!-- Logout (Footer) -->
+              <li class="border-top pt-2">
+                  <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                      <i class="material-symbols-rounded opacity-5">logout</i>
+                      <span class="ms-2">Logout</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+    <!-- End Navbar --><!-- Bootstrap JS (Required for Dropdown) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+      <style>
+        /* Form Container */
+        .container.py-5 {
+          background-color: #f8f9fa;
+          padding-top: 60px;
+          padding-bottom: 60px;
+        }
+    
+        /* Centered Title Section */
+        .container .text-center {
+          margin-bottom: 30px;
+        }
+    
+        .container .text-center h6 {
+          font-size: 18px;
+          color: #17a2b8; /* Primary color for the heading */
+        }
+    
+        .container .text-center h1 {
+          font-size: 32px;
+          font-weight: 700;
+          color: #333;
+        }
+    
+        /* Form Styling */
+        form#Project {
+          background-color: #fff;
+          padding: 40px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+    
+        /* Input Fields */
+        form#Project .form-group label {
+          font-weight: bold;
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+    
+        form#Project .form-control {
+          border-radius: 8px;
+          padding: 10px;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+    
+        form#Project .form-control-file {
+          padding: 10px;
+        }
+    
+        /* Button Styling */
+        form#Project .btn-primary {
+          background-color: #17a2b8;
+          border: none;
+          font-weight: 600;
+          padding: 10px 25px;
+          font-size: 16px;
+          border-radius: 25px;
+          transition: background-color 0.3s ease;
+        }
+    
+        form#Project .btn-primary:hover {
+          background-color: #138496;
+        }
+    
+        /* Centering the button */
+        form#Project .text-center.mt-4 {
+          text-align: center;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          form#Project {
+            padding: 20px;
+          }
+    
+          form#Project .form-group label {
+            font-size: 14px;
+          }
+    
+          form#Project .form-control {
+            font-size: 14px;
+          }
+    
+          form#Project .btn-primary {
+            width: 100%;
+            font-size: 18px;
+            padding: 12px;
+          }
+        }
+    
+        @media (max-width: 576px) {
+          .container.py-5 {
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+    
+          .container .text-center h1 {
+            font-size: 28px;
+          }
+    
+          .container .text-center h6 {
+            font-size: 16px;
+          }
+        }
+    
+        /* Delete Button Styling */
+        .deleteButton {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3px;
+          background-color: transparent;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s;
+          position: relative;
+          overflow: hidden;
+        }
+    
+        .deleteButton svg {
+          width: 44%;
+        }
+    
+        .deleteButton:hover {
+          background-color: rgb(237, 56, 56);
+          overflow: visible;
+        }
+    
+        .bin path {
+          transition: all 0.2s;
+        }
+    
+        .deleteButton:hover .bin path {
+          fill: #fff;
+        }
+    
+        .deleteButton:active {
+          transform: scale(0.98);
+        }
+    
+        .tooltip {
+          --tooltip-color: rgb(41, 41, 41);
+          position: absolute;
+          top: -40px;
+          background-color: var(--tooltip-color);
+          color: white;
+          border-radius: 5px;
+          font-size: 12px;
+          padding: 8px 12px;
+          font-weight: 600;
+          box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.105);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.5s;
+        }
+    
+        .tooltip::before {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          transform: rotate(45deg);
+          content: "";
+          background-color: var(--tooltip-color);
+          bottom: -10%;
+        }
+    
+        .deleteButton:hover .tooltip {
+          opacity: 1;
+        }
+      </style>
+
+
+      <!-- Project Upload Form (Initially Hidden) -->
+      <style>
+        /* General Form Styling */
+        .project-form-container {
+          background: #f4f7fc;
+          padding: 50px;
+          border-radius: 15px;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+          max-width: 700px;
+          margin: 40px auto;
+        }
+      
+        .project-form-container h2 {
+          text-align: center;
+          font-size: 28px;
+          color: #333;
+          font-weight: 700;
+          margin-bottom: 25px;
+        }
+      
+        .form-group {
+          margin-bottom: 20px;
+        }
+      
+        .form-group label {
+          font-weight: 600;
+          font-size: 15px;
+          color: #555;
+          margin-bottom: 8px;
+          display: block;
+        }
+      
+        .form-control {
+          width: 100%;
+          padding: 12px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          font-size: 14px;
+        }
+      
+        .form-control:focus {
+          border-color: #17a2b8;
+          outline: none;
+          box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+        }
+      
+        .btn-submit {
+          width: 100%;
+          background: #17a2b8;
+          border: none;
+          color: white;
+          padding: 12px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          transition: 0.3s ease-in-out;
+          cursor: pointer;
+        }
+      
+        .btn-submit:hover {
+          background: #138496;
+        }
+      
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .project-form-container {
+            padding: 30px;
+          }
+      
+          .project-form-container h2 {
+            font-size: 24px;
+          }
+        }
+      </style>
+      
+      <!-- Project Upload Form -->
+
+        <form method="POST" id="Project" enctype="multipart/form-data" novalidate autocomplete="on" style="display: none;">
+          <div class="project-form-container">
+            <h2>Upload Your Project</h2>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="title">Project Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Enter Project Title" required>
+            </div>
+        
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-control" id="category" name="category" required>
+                <option value="Solar Panels">Solar Panels</option>
+                <option value="CCTV Solution">CCTV Solution</option>
+                <option value="Networking Projects">Networking Projects</option>
+              </select>
+            </div>
+        
+            <div class="form-group">
+              <label for="description">Project Description</label>
+              <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your project" required></textarea>
+            </div>
+        
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="location" name="location" placeholder="Enter project location" required>
+            </div>
+        
+            <div class="form-group">
+              <label for="contact">Contact</label>
+              <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter contact details" required>
+            </div>
+        
+            <div class="form-group">
+              <label for="image">Upload Project Image</label>
+              <input type="file" class="form-control" id="image" name="image" required>
+            </div>
+        
+            <div class="form-group">
+              <label for="g_review_url">Google Review Link (Optional)</label>
+              <input type="url" class="form-control" id="g_review_url" name="g_review_url" placeholder="Enter Google Review link">
+            </div>
+          </div>    
+          <button type="submit" class="btn-submit">Upload Project</button>
+        </form>
+
+    
+<!-- Main Content for Project Table -->
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h4>Project Adder</h4>
+      <div></div> <!-- Keeps buttons aligned to the right -->
+      <div style="margin-left: 150px;">
+
+          <a id="toggle-form-btn" class="btn btn-primary me-2" onclick="toggleForm()">Add Project</a>
+            <script>
+                function toggleForm() {
+                    var form = document.getElementById('Project');
+                    form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+                }
+            </script>
+
+          <a href="{% url 'delete-all-project' %}" class="btn btn-danger">Delete All</a>
+      </div>
+  </div>
+</div>
+
+    <table class="table table-striped " style="margin-top: 50px; position-fixed">
+      <thead class="thead-dark" style="item-align: center; text-align: center;">
+        <tr>
+          <th>S No</th>
+          <th> Time </td>
+          <th>Category</th>
+          <th>Image URL</th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th> Contact</th>
+          <th> Google Review URL </th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody style="margin-top: 50px; item-align: center; text-align: center;">
+        {% if projects %}
+            {% for project in projects %}
+            <tr style=" item-align: center; text-align: center;">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ project.timestamp }}</td>
+            <td>{{ project.category }}</td>
+            <td>{{ project.image }}</td>
+            <td>
+                <!-- Image Thumbnail with Zoom Modal -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.counter }}">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-thumbnail" style="max-width: 100px; height: auto;">
+                </a>
+            </td>
+            
+            <!-- Image Zoom Modal -->
+            <div class="modal fade" id="imageModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="imageModalLabel{{ forloop.counter }}" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel{{ forloop.counter }}">{{ project.title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid" style="max-width: 100%; height: auto;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <style>
+                .img-thumbnail:hover {
+                    transform: scale(1.5);
+                    transition: transform 0.3s ease-in-out;
+                }
+                
+            </style>            
+            <td>{{ project.title }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.location }} </td>
+            <td>{{ project.contact }} </td>
+            <td>{{ project.g_review_url }} </td>
+            <td style=" item-align: center; text-align: center;">
+                <!-- Delete Button -->
+                <button class="deleteButton" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" data-delete-url="{% url 'delete-project' project.id %}">
+                {% csrf_token %}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 50 59" class="bin">
+                    <path fill="#000000" d="M0 7.5C0 5.01472 2.01472 3 4.5 3H45.5C47.9853 3 50 5.01472 50 7.5V7.5C50 8.32843 49.3284 9 48.5 9H1.5C0.671571 9 0 8.32843 0 7.5V7.5Z"></path>
+                    <path fill="#000000" d="M17 3C17 1.34315 18.3431 0 20 0H29.3125C30.9694 0 32.3125 1.34315 32.3125 3V3H17V3Z"></path>
+                    <path fill="#000000" d="M2.18565 18.0974C2.08466 15.821 3.903 13.9202 6.18172 13.9202H43.8189C46.0976 13.9202 47.916 15.821 47.815 18.0975L46.1699 55.1775C46.0751 57.3155 44.314 59.0002 42.1739 59.0002H7.8268C5.68661 59.0002 3.92559 57.3155 3.83073 55.1775L2.18565 18.0974ZM18.0003 49.5402C16.6196 49.5402 15.5003 48.4209 15.5003 47.0402V24.9602C15.5003 23.5795 16.6196 22.4602 18.0003 22.4602C19.381 22.4602 20.5003 23.5795 20.5003 24.9602V47.0402C20.5003 48.4209 19.381 49.5402 18.0003 49.5402ZM29.5003 47.0402C29.5003 48.4209 30.6196 49.5402 32.0003 49.5402C33.381 49.5402 34.5003 48.4209 34.5003 47.0402V24.9602C34.5003 23.5795 33.381 22.4602 32.0003 22.4602C30.6196 22.4602 29.5003 23.5795 29.5003 24.9602V47.0402Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                    <path fill="#000" d="M2 13H48L47.6742 21.28H2.32031L2 13Z"></path>
+                </svg>
+                <span class="tooltip">Delete</span>
+                </button>
+            </td>
+            </tr>
+
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="15" class="text-center">No projects found.</td>
+            </tr>
+
+
+            {% endif %}
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Are you sure?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Do you really want to delete this project? This process cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Confirm</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<script>
+    function toggleForm() {
+        var form = document.getElementById('Project');
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+</script>
+
+
+
+  
+
+<!-- JavaScript for Toggling Form Visibility -->
+<script>
+  document.getElementById('add-project-btn').addEventListener('click', function() {
+    var form = document.getElementById('Project');
+    if (form.style.display === 'none' || form.style.display === '') {
+      form.style.display = 'block';  // Show the form
+    } else {
+      form.style.display = 'none';  // Hide the form
+    }
+  });
+</script>
+
+
+
+
+      <!-- Core JS Files -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+ 
+   <!-- Github buttons -->
+   <script async defer src="https://buttons.github.io/buttons.js"></script>
+ 
+   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+   <script src="{% static 'admin/assets/js/material-dashboard.min.js?v=3.2.0' %}"></script>
+
+
+   <!-- For Disable inspect Option -->
+   <script>
+      document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          alert('Right-click is disabled on this page.');
+      });
+   </script>
+   <script>
+      document.addEventListener('keydown', function(e) {
+          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+              e.preventDefault();
+              alert('Developer tools are disabled.');
+          }
+      });
+  </script>
+
+
+
+ </body>
+ 
+ </html>

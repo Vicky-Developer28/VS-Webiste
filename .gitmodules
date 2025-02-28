@@ -1,0 +1,3 @@
+[submodule "VS-Website"]
+	path = VS-Website
+	url = https://github.com/Vicky-Developer28/VS-Website.git

@@ -1,0 +1,1691 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="keywords" content="Vimal Solar">
+    <meta name="description" content="Vimal Solar">
+    <title>Vimal Solar</title>
+
+    <!-- Favicon -->
+     <link rel="icon" type="image/png" src="{% static 'Favicon.png' %}">
+     <script> document.addEventListener("DOMContentLoaded", function() {
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+          link = document.createElement("link");
+          link.rel = "icon";
+          link.type = "image/png";
+          document.head.appendChild(link);
+      }
+      link.href = "/static/Favicon.png?v=" + new Date().getTime(); // Cache busting
+  });
+   </script>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Third-party Library Styles -->
+    <link rel="stylesheet" href="{% static 'main/lib/animate/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/lib/lightbox/css/lightbox.min.css' %}">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+</head>
+<body>
+    <!-- CSS -->
+<style>
+      /* Modal */
+      .title {
+        font-size: 28px;
+        color: royalblue;
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+      }
+
+      .title::before,.title::after {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        left: 0px;
+        background-color: royalblue;
+      }
+
+      .title::before {
+        width: 18px;
+        height: 18px;
+        background-color: royalblue;
+      }
+
+      .title::after {
+        width: 18px;
+        height: 18px;
+        animation: pulse 1s linear infinite;
+      }
+      .modal-dialog {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      /* Form */
+      .form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          max-width: 500px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0px 4px 10px rgba(52, 89, 223, 0.3);
+      }
+
+      .label {
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: #333;
+      }
+
+      .input {
+          width: 100%;
+          height: 45px;
+          padding: 8px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+      }
+
+      .input:focus {
+          outline: none;
+          border-color: royalblue;
+      }
+
+      .submit {
+          background-color: royalblue;
+          color: #fff;
+          padding: 12px;
+          border-radius: 10px;
+          cursor: pointer;
+          border: none;
+      }
+
+      .success-message {
+          color: green;
+          font-weight: bold;
+      }
+
+      .footer {
+        font-size: 0.9rem;
+      }
+
+      .footer h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer ul li a:hover {
+        color: #0d6efd;
+      }
+
+      .footer hr {
+        border-top: 1px solid #666;
+      }
+
+      .footer .text-white-50:hover {
+        color: #fff;
+      }
+
+      .footer img {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .footer .d-flex {
+          flex-direction: row;
+          align-items: left;
+          text-align: left;
+        }
+      }
+      @media (max-width: 768px) 
+            { 
+            .footer .address {
+              margin-left: 80px;
+              align-items: left;
+              text-align: left;}
+              
+            }
+
+      .feature-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease-in-out;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        background:rgb(0, 98, 255);
+        color: white;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .bg-custom {
+        background-color:rgb(0, 0, 0); /* Dark blue background */
+        padding: 3rem 0;
+      }
+
+      .btn-custom {
+        background-color: white;
+        color:rgb(0, 0, 0);
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .btn-custom:hover {
+        background-color: #f0f0f0;
+        color:rgb(0, 102, 255);
+      }
+
+      .marquee-section {
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        padding: 10px 0;
+      }
+
+      .marquee-container {
+        display: flex;
+        gap: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .marquee {
+        display: flex;
+        gap: 50px;
+        min-width: 100%;
+        animation: marqueeScroll 10s linear infinite;
+      }
+
+      .marquee span {
+        font-size: 1.2rem;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      @keyframes marqueeScroll {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      .our-brands {
+        padding: 50px 0;
+        background-color: #fff;
+      }
+
+      .brand-slider-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .brand-slider {
+        display: flex;
+        flex-direction: column; /* Stack rows */
+        overflow: hidden;
+        scroll-behavior: smooth;
+        width: 90%;
+        border-radius: 10px;
+      }
+
+      .brand-slide {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .brand-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .brand-logo {
+        width: 220px;
+        height: 160px;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+        border: 2px solid blue;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .brand-logo:hover {
+        transform: scale(1.1);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .brand-slider {
+          width: 100%;
+        }
+        .brand-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .brand-logo {
+          width: 120px;
+          height: 80px;
+        }
+      }
+
+      .card {
+        --bg-card: rgb(255, 255, 255);
+        --primary: rgb(40, 102, 217);
+        --primary-800: rgba(255, 0, 0, 0);
+        --primary-shadow: rgb(0, 115, 255);
+        --light: #d9d9d9;
+        --zinc-800: #18181b;
+        --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+    
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-card);
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    
+      .image_container {
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        background-color: var(--primary-800);
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .image_container img {
+        max-width: 100%;
+        max-height: 750px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    
+      .title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--zinc-800);
+        text-transform: capitalize;
+      }
+    
+      .cart-button {
+        cursor: pointer;
+        padding: 0.5rem;
+        width: 100%;
+        background-image: var(--bg-linear);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: inset 0 0 0.25rem 1px var(--light);
+        transition: background 0.3s ease;
+      }
+    
+      .cart-button:hover {
+        background: var(--primary-shadow);
+      }
+
+          .kenburns-bottom {
+            animation: kenburns-bottom 5s ease-out both;
+            will-change: transform;
+          }
+    
+          @keyframes kenburns-bottom {
+            0% {
+              transform: scale(1) translateY(0);
+              transform-origin: 50% 84%;
+            }
+            100% {
+              transform: scale(1.25) translateY(15px);
+              transform-origin: bottom;
+            }
+          }
+    
+          .text-focus-in {
+            animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+              forwards;
+          }
+    
+          @keyframes text-focus-in {
+            0% {
+              filter: blur(12px);
+              opacity: 0;
+            }
+            100% {
+              filter: blur(0px);
+              opacity: 1;
+            }
+          }
+    
+          .slideInUp {
+            animation: slideInUp 1s ease-in-out;
+          }
+    
+          @keyframes slideInUp {
+            0% {
+              transform: translateY(50px);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+
+      /* General Styles */
+      body {
+        overflow-x: hidden;
+        font-family: "Times New Roman", Times, serif;
+        background-color: #ffffff;
+        margin-top: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Sticky Navbar */
+      .sticky-nav {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        height: 230px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Navbar adjustments */
+      .navbar {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        margin-bottom: 0;
+        padding: 0;
+      }
+
+      .navbar.navbar-expand-lg {
+        height: 80px;
+      }
+
+      /* Navbar Brand (logo) */
+      .navbar-brand img {
+        width: 250px;
+        height: auto;
+        font-family: "Maragsa", sans-serif;
+      }
+
+      /* Navbar Toggler Icon */
+      .navbar-toggler-icon {
+        background-color: transparent;
+      }
+
+      /* Nav-item button adjustments */
+      .nav-item.nav-link.btn {
+        height: 40px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-top: 5px;
+        color: black !important; /* Default color is black */
+        background-color: white;
+        border: 1px solid #007bff;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Active button */
+      .nav-item.nav-link.active {
+        background-color: #007bff;
+        color: white !important;
+      }
+
+      /* Change text color on hover */
+      .nav-item.nav-link.btn:hover {
+        color: white !important; /* Text turns white on hover */
+        background-color: #007bff; /* Blue background */
+        border-color: #007bff;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      }
+
+      /* Carousel image settings */
+      .carousel img {
+        object-fit: cover;
+      }
+
+      /* Large screen adjustments */
+      @media (min-width: 992px) {
+        .d-none.d-lg-flex {
+          display: flex !important;
+        }
+      }
+
+      /* Button Adjustments */
+      .navbar-nav .nav-item {
+        margin-left: 10px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: white;
+        background-color: #007bff;
+      }
+
+      /* Column and row alignment */
+      .container-fluid {
+        text-align: center;
+        padding: 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .col-lg-7,
+      .col-lg-5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .col-lg-7 .d-inline-flex,
+      .col-lg-5 .d-inline-flex {
+        align-items: center;
+      }
+
+      .col-lg-5 .d-inline-flex {
+        gap: 10px;
+      }
+
+      .navbar .fa {
+        font-size: 18px;
+      }
+      .btn-square {
+        padding: 10px;
+        margin-left: 10px;
+      }
+
+      .btn-link {
+        background-color: transparent;
+        border: none;
+      }
+
+      .btn-link:hover {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
+
+      .slide-bck-center {
+        -webkit-animation: slide-bck-center 0.5s
+          cubic-bezier(0.47, 0, 0.745, 0.715) 100ms forwards;
+        animation: slide-bck-center 0.5s cubic-bezier(0.47, 0, 0.745, 0.715)
+          100ms forwards;
+      }
+      @-webkit-keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+      @keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+
+      .shadow-drop-center {
+        -webkit-animation: shadow-drop-center 0.4s
+          cubic-bezier(0.215, 0.61, 0.355, 1) 1ms both;
+        animation: shadow-drop-center 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)
+          1ms both;
+      }
+
+      @-webkit-keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+      @keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      @-webkit-keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+      @keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+
+      .text-primary {
+        color: #007bff;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      h4 {
+        letter-spacing: 1px;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .portfolio-container .portfolio-item {
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .portfolio-container .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .portfolio-img {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        border-radius: 8px;
+      }
+
+      .portfolio-img img {
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-img:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .portfolio-img:hover .portfolio-btn {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .portfolio-btn .btn {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        border: none;
+      }
+
+      .portfolio-btn .btn:hover {
+        background-color: #007bff;
+      }
+
+      .portfolio-item .pt-3 {
+        text-align: center;
+      }
+
+      .portfolio-item p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #007bff;
+      }
+
+      .portfolio-item h5 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+
+        .portfolio-item {
+          margin-bottom: 2rem;
+        }
+
+        .portfolio-img {
+          height: auto; /* Maintain aspect ratio */
+        }
+      }
+
+      .carousel-item {
+        transition: transform 0.6s ease-in-out;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+      }
+
+      .carousel-control-prev-icon:hover,
+      .carousel-control-next-icon:hover {
+        background-color: #007bff;
+      }
+      /* Hover effect on images */
+      .project-images img:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+
+      /* Button Hover Effect */
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+
+      /* Media Query for Small Screens */
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        }
+      }
+      /* Adjust carousel for mobile screens */
+      @media (max-width: 768px) {
+        .carousel-image {
+          height: 300px; /* Maintain original aspect ratio */
+          max-height: 800px; /* Maintain original aspect ratio */
+
+          width: 100%; /* Full width */
+          object-fit: cover; /* Adjust image content fit */
+        }
+        .m-align{
+          position:relative;
+          text-position:
+          text-align:center;
+          items-align: center;
+        }
+      }
+    </style>
+
+
+<!-- Navbar Starts -->
+<style>
+  /* Hide Sidebar on Large Screens */
+  @media (min-width: 769px) {
+      .sidebar {
+          display: none;
+      }
+      .header {
+        margin-left:600px;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .container{
+        max-width: 100%
+      }
+      .container-text {
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          margin-top: 180px;
+      }
+          .navbar-brand {
+            margin-right: 60px; /* Pushes everything else to the right */
+        }
+        
+        .navbar-toggler {
+            margin-left: 60px; /* Adjust as needed */
+        }
+    
+
+      .about-img {
+          height: auto;
+          max-height: 100%;
+      }
+
+      .navbar {
+          background: #fff !important;
+      }
+
+      .nav-pc {
+          display: none;
+      }
+
+      /* Sidebar Menu Styles */
+      .sidebar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          transition: right 0.4s ease-in-out;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          gap:50px;
+      }
+
+      .sidebar.active {
+          right: 0;
+          
+      }
+
+      .sidebar-links {
+          list-style: none;
+          padding: 0;
+          text-align: center;
+      }
+
+      .sidebar-links li {
+          margin: 15px 0;
+      }
+
+      .sidebar-links a {
+          font-size: 24px;
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+          transition: color 0.3s;
+      }
+
+      .sidebar-links a:hover {
+          color: #007bff;
+      }
+
+      /* Close Button */
+      #closeSidebar {
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          font-size: 36px;
+          color: white;
+          background: none;
+          border: none;
+          cursor: pointer;
+      }
+
+      /* WhatsApp & Call Icons */
+      .sidebar-footer {
+          position: absolute;
+          bottom: 30px;
+          display: flex;
+          gap: 15px;
+      }
+
+      .sidebar-footer img {
+          width: 50px;
+          height: 50px;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 30px;
+          height: 20px;
+          cursor: pointer;
+      }
+
+      .hamburger-line {
+          width: 100%;
+          height: 4px;
+          background-color: #000000;
+          transition: all 0.3s ease-in-out;
+      }
+  }
+</style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-nav position-absolute w-100 z-index-1" style="background-color: #ffffff">
+  <div class="container py-1">
+      <!-- Logo -->
+      <a href="{% url 'index' %}" class="navbar-brand me-2"
+          style="
+              font-family: 'Theseasons';
+              font-size: 30px;
+              font-weight: bold;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              text-align: center;
+              margin-top: 15px;
+          ">
+          <img src="{% static 'main/img/favicon.png' %}" alt="Logo" style="width: 60px; height: 60px" class="navbar-brand me-2" />
+          Vimal Solar
+      </a>
+
+      <!-- Menu Icon (Hamburger) -->
+      <button class="navbar-toggler border-0 p-0 g-2"  type="button" id="sidebarToggle" aria-label="Toggle navigation" style="outline: none;">
+          <div class="hamburger">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+          </div>
+      </button>
+
+      <!-- Sidebar Menu -->
+      <div id="sidebarMenu" class="sidebar">
+          <button id="closeSidebar">&times;</button>
+          <ul class="sidebar-links">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'service' %}">Services</a></li>
+              <li><a href="{% url 'project' %}">Gallery</a></li>
+              <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          </ul>
+      </div>
+
+      <!-- Navbar Links (Desktop) -->
+      <div class="nav-pc collapse navbar-collapse" id="navbarNav" data-bs-auto-close="false">
+          <ul class="navbar-nav ms-auto">
+              <a href="{% url 'index' %}" class="btn nav-item nav-link  rounded-pill text-white btn-outline-light" style="font-size: 14px">Home</a>
+              <a href="{% url 'service' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">Services</a>
+              <a href="{% url 'project' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">Gallery</a>
+              <a href="{% url 'about' %}" class="btn nav-item nav-link active rounded-pill text-black btn-outline-light" style="font-size: 14px">About</a>
+              <a href="{% url 'contact' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">Contact</a>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- JavaScript -->
+<script>
+  document.getElementById('sidebarToggle').addEventListener('click', function () {
+      document.getElementById('sidebarMenu').classList.add('active');
+  });
+
+  document.getElementById('closeSidebar').addEventListener('click', function () {
+      document.getElementById('sidebarMenu').classList.remove('active');
+  });
+
+  // Close sidebar when clicking outside of it
+  document.addEventListener('click', function (event) {
+      var sidebar = document.getElementById('sidebarMenu');
+      var sidebarToggle = document.getElementById('sidebarToggle');
+      if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+          sidebar.classList.remove('active');
+      }
+  });
+</script>
+
+<!-- About Us Section -->
+<section class="position-relative bg-dark text-white" style="height: 300px; overflow: hidden;">
+  <!-- Background Image -->
+  <img src="{% static 'main/img/bg.jpg' %}" 
+      class="about-img position-absolute w-100 h-100 object-fit-cover opacity-90" 
+      alt="Hero Image">
+
+  <!-- Darker Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.4);"></div>  
+
+  <!-- Content -->
+  <div class="header container container-text d-flex align-items-center justify-content-center text-center position-relative" 
+      style="z-index: 2; margin-top: 120px;">
+      <div class="col-md-6 text-white">
+          <h1 class="display-4 fw-bold text-glow">About Us</h1>
+          <p class="text-glow">At Vimal Solar, we specialize in providing sustainable energy solutions and advanced security systems to power and protect your home or business.</p>
+      </div>
+  </div>
+</section>
+
+
+<!-- Additional CSS for Mobile & Text Enhancement -->
+<style>
+    /* Text Shadow for Better Readability */
+    .text-glow {
+        text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.62); /* Brighter shadow */
+    }
+
+    /* Make sure text is above overlay */
+    .position-relative {
+        z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+        section.position-relative {
+            height: 300px !important;
+        }
+        .container {
+            justify-content: center !important;
+            text-align: center;
+        }
+    }
+</style>
+
+
+<!-- Page Header End -->
+<!-- About Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-5"><strong>About Us!</strong></h3>
+            <h4 class="mb-4 text-black text-center mt-4" style="font-size: 1.3rem;">5+ Years of Expertise in Solar and Security</h4>
+                        <!-- Image Section -->
+                        <div class="col-lg-5 col-12 animated slideInLeft py-4" data-wow-delay="0.2s">
+                            <div class="about-image text-center">
+                                <img src="{% static 'main/img/our-about.png' %}" class="img-fluid rounded" alt="About Our Team" style="height: 400px; ">
+                            </div>
+                        </div>
+                        <!-- Text Section -->
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem; margin-inline-start: 50px;">
+                        At <strong>Vimal Solar</strong>, we are dedicated to delivering sustainable energy solutions while ensuring cutting-edge security for homes and businesses. With a strong focus on Solar Energy Systems and advanced CCTV Networking, we empower our clients to confidently embrace a greener, safer, and more efficient future.<br><br>
+                        At Vimal Solar, our commitment goes beyond technology; we believe in building trust and long-term relationships with our clients. Our team combines years of experience with a passion for innovation, ensuring we deliver solutions that meet both present and future needs. Join us in shaping a world that’s not only secure but also powered sustainably for generations to come.
+                                            </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+ <!-- Vision Start -->
+ <div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Vision</strong></h3>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem; margin-inline-start: 50px;">
+                        To lead the transition toward a greener and safer world by offering reliable, high-quality, and innovative solutions in solar energy and security networking.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12 animated slideInLeft py-4" data-wow-delay="0.2s">
+                <div class="about-image text-center">
+                    <img src="{% static 'main/img/our-vision.png' %}" class="img-fluid rounded" alt="About Our Team" style="height: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Mission</strong></h3>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-mission.png' %}" class="img-fluid rounded" alt="Our Journey" style="height: 400px;">
+            </div>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInLeft" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black text-center mt-4 py-4" style="font-size: 1rem;">
+                    <ul>
+                        <li>To provide cutting-edge solar energy solutions that reduce energy costs and environmental impact.</li><br> 
+                        <li>To deliver seamless and secure CCTV networking systems tailored to individual and organizational needs.</li><br>
+                        <li> To build long-term relationships with our clients by ensuring exceptional service and trustworthiness. </li>
+                    </ul>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Journey Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container journey px-lg-0">
+        <div class="row g-6 mx-lg-6 align-items-center">
+            <h3 class="text-primary text-center mt-4"><strong>Our Journey</strong></h3>
+            <div class="col-lg-5 col-12 journey-text py-4 animated slideInRight" style="text-align: left;" data-wow-delay="0.2s">
+            <div class="content px-3">
+                <p class="text-black mt-4" style="font-size: 1rem;">
+                    <strong>Vimal Solar</strong> was officially established in 2024 as a GST-registered company and proudly partners with renowned brands like <strong>UTL Solar</strong> and <strong>Adani Solar</strong>. 
+                    However, our roots trace back to 2020, where we honed our skills and built extensive expertise while working under other companies.
+                </p>
+                <p class="text-black mt-4" style="font-size: 1rem;">
+                    Today, with over five years of experience, we excel in delivering high-quality solar power solutions and advanced CCTV systems. From <strong>layout design</strong> and <strong>system planning</strong> to <strong>installation</strong> and <strong>ongoing maintenance</strong>, we manage every step with precision and dedication.
+                </p>
+            </div>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInLeft" data-wow-delay="0.2s">
+                <img src="{% static 'main/our-journey.png' %}" class="img-fluid rounded" alt="Our Journey" style="height: 400px; width: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Journey End -->
+
+<!-- Our Services Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0" style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container services px-lg-0 py-4">
+        <h3 class="text-primary text-center"><strong>Our Services</strong></h3>
+            <h4 class="text-black text-center">What We Offer</h4>
+        <div class="row g-4 mx-lg-7 align-items-center">
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-services.png' %}" class="img-fluid rounded" alt="Our Services" style="height: 400px; width: 400px;">
+            </div>
+            <div class="col-lg-4 col-16 services-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black" style="font-size: 1rem; list-style-type: none; padding-left: 0;">
+                    <li style="text-align: left;">
+                        <strong>1. Solar Energy Solutions</strong>
+                        <ul style="margin-left: 20px; text-align: left;">
+                            <li><strong>Solar Panel Installation:</strong> High-efficiency solar panels for residential, commercial, and industrial use.</li>
+                            <li><strong>Solar Inverters & Batteries:</strong> Reliable backup solutions for uninterrupted power supply.</li>
+                            <li><strong>Energy Consulting:</strong> Customized plans to optimize energy savings and sustainability.</li>
+                        </ul>
+                    </li>
+                    <li style="text-align: left;">
+                        <strong>2. Surveillance Networking Solutions</strong>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Surveillance Systems Installation:</strong> Advanced security systems for homes and businesses.</li>
+                            <li><strong>Network Configuration:</strong> Reliable CCTV networking to ensure real-time monitoring and data integrity.</li>
+                            <li><strong>Maintenance and Upgrades:</strong> Ensuring your security systems remain up-to-date and functional.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Services End -->
+
+<!-- Why Choose Us Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h3 class="text-primary text-center" ><strong>Why Choose Vimal Solar?</strong></h3><br>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-4 col-12 why-us-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black " style="text-align: left; font-size: 1rem;">
+                    <li><strong>Expertise:</strong> 5 Years of experience in solar energy and CCTV solutions.</li>
+                    <li><strong>Quality Products:</strong> We partner with leading brands to offer the best products in the market.</li>
+                    <li><strong>Tailored Solutions:</strong> Customized services designed to meet your unique requirements.</li>
+                    <li><strong>After-Sales Support:</strong> Dedicated customer service for maintenance and troubleshooting.</li>
+                    <li><strong>Affordable Pricing:</strong> Cost-effective solutions without compromising on quality.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/why-choose-us.png' %}" class="img-fluid rounded" alt="Why Choose Us" style="height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Why Choose Us End -->
+
+<!-- Our Achievements Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h3 class="text-primary text-center"><strong>Our Achievements</strong></h3>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-5 col-12 animated slideInLeft" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/Achievement.png' %}" class="img-fluid rounded" alt="Achievements" style="height: 450px;">
+            </div>
+            <div class="col-lg-4 col-12 achievements-text py-4 animated slideInRight" data-wow-delay="0.2s">
+                <ul class="text-black text-left" style="text-align: left; font-size: 1rem;">
+                    <li><strong>500+</strong> successful solar energy system installations across residential and commercial properties.</li>
+                    <li><strong>100+</strong> businesses and institutions trust us for their CCTV networking needs.</li>
+                    <li>Recognized for outstanding customer service and technical expertise in renewable energy and security systems.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Achievements End -->
+
+<!-- Future Goals Start -->
+<div class="container-fluid bg-light overflow-hidden my-4 px-lg-0 " style="font-family: 'Times New Roman', Times, serif;">
+    <div class="container why-choose-us px-lg-0 py-4">
+        <h1 class="text-primary text-center" style="font-size: 2rem;"><strong>Future Goals</strong></h1>
+        <p class="text-black" style="font-size: 1rem;">
+            Our aspirations for the future include:
+        </p>
+        <div class="row g-4 mx-lg-6 align-items-center">
+            <div class="col-lg-7 col-12 future-goals-text py-4 animated slideInLeft" data-wow-delay="0.2s">
+                <ul class="text-black" style="text-align: left; font-size: 1rem;">
+                    <li>Expanding our solar energy solutions to reach underserved communities.</li>
+                    <li>Developing smart integration systems that combine solar energy and security technologies.</li>
+                    <li>Continuing to innovate and deliver exceptional service to our clients.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-12 animated slideInRight" data-wow-delay="0.2s">
+                <img src="{% static 'main/img/our-goals.png' %}" class="img-fluid rounded" alt="Future Goals" style="height: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Future Goals End -->
+
+<style>
+    /* About Section Styling */
+    .about-image img {
+        max-width: 100%;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .about-image img:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+        background-color: #4292ed;
+    }
+</style>
+
+
+    <!-- Call to Action Section -->
+    <div class="bg-custom text-center py-5">
+      <div class="container">
+        <h2 class="text-white fw-bold display-5">Ready to Transform Your Property?</h2>
+        <p class="mt-3 text-light fs-5">Get a customized solution for your solar and security needs.</p>
+        <div class="mt-4">
+          <a href="#" class="btn btn-custom px-5 py-3 fs-5"       data-bs-toggle="modal" data-bs-target="#enquiryModal">Request Free Quote</a>
+        </div>
+      </div>
+    </div>
+
+
+<footer class="footer bg-dark text-white pt-3 pb-6">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <!-- Logo Section -->
+      <div class="col-md-2 mb-3 d-flex justify-content-center justify-content-md-start">
+        <img src="{% static 'Favicon.png' %}" alt="Brand Logo" style="width: 100px; background-color: white; border-radius: 50%">
+      </div>
+      
+      <!-- Quick Links Section -->
+      <div class="col-md-3 col-6 mb-3">
+        <h5 class="text-uppercase">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'index' %}" class="text-white-50 text-decoration-none">Home</a></li>
+          <li><a href="{% url 'about' %}" class="text-white-50 text-decoration-none">About</a></li>
+          <li><a href="{% url 'project' %}" class="text-white-50 text-decoration-none">Projects</a></li>
+          <li><a href="{% url 'product' %}" class="text-white-50 text-decoration-none">Product</a></li>
+          <li><a href="{% url 'service' %}" class="text-white-50 text-decoration-none">Service</a></li>
+          <li><a href="{% url 'contact' %}" class="text-white-50 text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Address Section -->
+      <div class="col-md-4 col-12 mb-3">
+        <h5 class="text-uppercase">Connect with us</h5>
+        <ul class="list-unstyled address" >
+          <li><a href="https://maps.app.goo.gl/hnSuQb7GbgN55EUo6" class="text-white-50 text-decoration-none"><i class="bi bi-geo-alt-fill"></i> Office Add : 7A/1, Madangeeswar Koil Street, Hospital Road, Near CSI Hospital, Kanchipuram - 631502.</a></li>
+          <li><a href="https://maps.app.goo.gl/hnSuQb7GbgN55EUo6" class="text-white-50 text-decoration-none"><i class="bi bi-geo-alt-fill"></i> Main Add : 15, Natesan Street, Vedhachalam Nagar, Sevilimedu, Kanchipuram - 631501</a></li>
+          <li><a href="mailto:info@vimalsolar.in" class="text-white-50 text-decoration-none"><i class="bi bi-envelope-fill"></i>  info@vimalsolar.in</a></li>
+          <li><a href="tel:+916385668684" class="text-white-50 text-decoration-none"><i class="bi bi-telephone-fill"></i>  +91 6385668684</a></li>
+        </ul>
+      </div>
+      
+      <!-- Report Us Section -->
+      <div class="col-md-3 col-12 mb-3 d-none d-md-block ">
+        <h5 class="text-uppercase">Report Us!</h5>
+        <input type="text" placeholder="Enter your feedback" class="form-control mt-2" style="height: 80px">
+        <button class="btn btn-primary mt-2">Submit</button>
+      </div>
+    </div>
+
+    <hr class="bg-white-50" />
+
+    <!-- Footer Bottom -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
+      <p class="mb-2 text-white-50">&copy; <span id="current-year"></span> Vimal Solar. All Rights Reserved.</p>
+      
+      <!-- Social Media Links -->
+      <div class=" d-flex justify-content-center d-md-block">
+        <a href="#" class="text-white-50 mx-2"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/vimalsolar_kpm/" class="text-white-50 mx-2"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61570614172675" class="text-white-50 mx-2"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-white-50 mx-2"><i class="fab fa-linkedin"></i></a>
+      </div>
+      
+      <!-- Footer Links -->
+      <div class=" d-flex justify-content-center d-md-block">
+        <a href="{% url 'term' %}" class="text-white-50 mx-2">Terms & Conditions</a>
+        <a href="{% url 'privacy' %}" class="text-white-50 mx-2">Privacy Policy</a>
+        <a href="#" class="text-white-50 mx-2">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+    <!-- Back to Top -->
+    <a
+      href="{% url 'index' %}"
+      class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+  <!-- Enquiry Form Modal -->
+  <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form class="form" method="POST" id="EnquiryForm" onsubmit="return validateForm()" novalidate autocomplete="on">
+            {% csrf_token %}
+            <p class="title">Enquiry</p>
+            <p class="message">Fill in the details to submit your enquiry.</p>
+
+            <label class="label">
+              <span>Name</span>
+              <input type="text" name="name" class="input" required>
+            </label>
+
+            <label class="label">
+              <span>Company (Optional)</span>
+              <input type="text" name="company" class="input">
+            </label>
+
+            <label class="label">
+              <span>Phone Number 1</span>
+              <input type="tel" name="phone_number_1" class="input" maxlength="10" pattern="\d{10}" required>
+            </label>
+
+            <label class="label">
+              <span>Phone Number 2 (Optional)</span>
+              <input type="tel" name="phone_number_2" class="input" maxlength="10" placeholder="+91" pattern="\d{10}">
+            </label>
+
+            <label class="label">
+              <span>Email</span>
+              <input type="email" name="email" class="input" required>
+            </label>
+
+            <label class="label">
+              <span>Address</span>
+              <input type="text" name="address" class="input" required>
+            </label>
+
+            <label class="label">
+              <span>City</span>
+              <input type="text" name="city" class="input" required>
+            </label>
+
+            <label class="label">
+              <span>State</span>
+              <input type="text" name="state" class="input" required>
+            </label>
+
+            <label class="label">
+              <span>Pincode</span>
+              <input type="number" name="pincode" class="input" maxlength="6" pattern="\d{6}" required>
+            </label>
+
+            <label class="label">
+              <span>Service Type</span>
+              <select class="input" name="service_type" id="service_type" required>
+                <option value="" selected disabled>Select Service</option>
+                <option value="solar">Solar Power System</option>
+                <option value="cctv">CCTV Surveillance</option>
+                <option value="networking">Networking Solutions</option>
+              </select>
+            </label>
+
+            <!-- Solar Section -->
+            <div id="solar_section" class="form-section">
+              <label class="label">
+                <span>System Type</span>
+                <select class="input" name="system_type">
+                  <option value="Not Provided" selected disabled>Select Type</option>
+                  <option value="ON Grid">On-Grid</option>
+                  <option value="OFF Grid">Off-Grid</option>
+                  <option value="Hybrid">Hybrid</option>
+                </select>
+              </label>
+
+              <label class="label">
+                <span>Purpose</span>
+                <select class="input" name="system_type">
+                  <option value="Not Selected" selected disabled>Select Purpose</option>
+                  <option value="Residential" > Residential</option>
+                  <option value="Commercial"> Commercial </option>
+                  <option value="Industry"> Industry</option>
+                  <option value="Factory"> Factory</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label class="label">
+                <span>Budget Range</span>
+                <input type="number" name="solar_budget" class="input">
+              </label>
+
+              <label class="label">
+                <span>Avarage Current Bill</span>
+                <input type="text" name="current_bill" class="input">
+              </label>
+                <label class="label">
+                  <span>Comments</span>
+                  <textarea class="input" name="additional_comments"></textarea>
+                </label>              
+            </div>
+
+            <!-- CCTV Section -->
+            <div id="cctv_section" class="form-section">
+              <label class="label">
+                <span>Premises Type</span>
+                <select class="input" name="premises_type">
+                  <option value="Not Provided" selected disabled>Select Premises</option>
+                  <option value="Home">Home</option>
+                  <option value="Office">Office</option>
+                  <option value="Retail Store">Retail Store</option>
+                  <option value="Warehouse">Warehouse</option>
+                  <option value="Factory">Factory</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label class="label">
+                <span>Number of Cameras</span>
+                <input type="number" name="num_cameras" class="input">
+              </label>
+
+              <label class="label">
+                <span>Budget Range</span>
+                <input type="number" name="solar_budget" class="input">
+              </label>
+
+                <label class="label">
+                  <span>Comments</span>
+                  <textarea class="input" name="additional_comments"></textarea>
+                </label>
+            </div>
+
+            <!-- Networking Section -->
+            <div id="networking_section" class="form-section">
+                <label class="label">
+                  <span>Please Specify that</span>
+                  <textarea class="input" name="additional_comments"></textarea>
+                </label>
+            </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="terms" value="1">
+                <label class="form-check-label" for="inlineCheckbox1">
+                  Are you Agree with our <a href="terms-and-conditions.html" target="_blank">Terms & Conditions</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+                </label>
+              </div>
+        </div>
+
+
+            
+
+            <button type="submit" class="submit" style="text-align:center;">Submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Initialize Plugins -->
+
+
+<!-- jQuery (Load First) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Required Plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.counterup/2.1.0/jquery.counterup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/WOW/1.1.2/wow.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Libraries -->
+    
+    <script src="{% static 'main/js/main.js' %}" defer></script>
+    <script src="{% static 'main/lib/wow/wow.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/easing/easing.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/waypoints/waypoints.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/counterup/counterup.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/isotope/isotope.pkgd.min.js' %}" defer></script>
+    <script src="{% static 'main/lib/lightbox/js/lightbox.min.js' %}" defer></script>
+
+    <script>
+    
+      document.addEventListener("DOMContentLoaded", function () {
+        // Spinner Removal
+        setTimeout(() => {
+            const spinner = document.getElementById("spinner");
+            if (spinner) spinner.classList.remove("show");
+        }, 1);
+    
+        // Navbar Scroll Effect
+        const navbar = document.querySelector(".sticky-nav");
+        if (navbar) {
+            window.addEventListener("scroll", function () {
+                navbar.classList.toggle("scrolled", window.scrollY > 10);
+            });
+        }
+    
+        // Back to Top Button
+        const backToTopBtn = document.querySelector(".back-to-top");
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+    
+        // Service Type Toggle Sections
+        const serviceSections = {
+            solar: document.getElementById("solar_section"),
+            cctv: document.getElementById("cctv_section"),
+            networking: document.getElementById("networking_section")
+        };
+    
+        const serviceTypeSelect = document.getElementById("service_type");
+        if (serviceTypeSelect) {
+            Object.values(serviceSections).forEach(section => section.style.display = "none");
+    
+            serviceTypeSelect.addEventListener("change", function () {
+                Object.values(serviceSections).forEach(section => section.style.display = "none");
+                if (serviceSections[this.value]) {
+                    serviceSections[this.value].style.display = "block";
+                }
+            });
+        }
+    
+        // AJAX Enquiry Form Submission (Fixed Version)
+        const enquiryForm = document.getElementById("EnquiryForm");
+
+        // Function to validate terms and conditions checkbox
+        function validateForm() {
+            if (!document.getElementById('inlineCheckbox1').checked) {
+                alert('You must accept the terms and conditions.');
+                return false;
+            }
+            return true;
+        }
+        
+        if (enquiryForm) {
+            enquiryForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+        
+                // Validate before submission
+                if (!validateForm()) {
+                    return;
+                }
+        
+                let formData = new FormData(this);
+                fetch("/submit-enquiry/", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert("Error: " + data.error);
+                    } else {
+                        alert(data.message);
+                        if (data.message.includes("successfully")) {
+                            enquiryForm.reset(); // Reset form after successful submission
+                            window.location.href = window.location.href;
+                        }
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        }
+        
+    
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener("click", function () {
+                document.getElementById("navbarNav").classList.toggle("show");
+                document.getElementById("toggleIcon").classList.toggle("bi-list");
+                document.getElementById("toggleIcon").classList.toggle("bi-x");
+            });
+        }
+    
+        // Carousel Initialization (Bootstrap)
+        const carouselElement = document.querySelector(".carousel");
+        if (carouselElement) {
+            new bootstrap.Carousel(carouselElement, { interval: 5000, ride: "carousel" });
+        }
+    
+        // Animate Elements on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("fadeIn", entry.target.dataset.animation);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+    
+        document.querySelectorAll(".wow").forEach((element) => {
+            element.dataset.animation = element.classList.contains("slideInRight") ? "slideInRight" : "slideInLeft";
+            element.classList.add("animated");
+            observer.observe(element);
+        });
+    
+        // Update Year in Footer
+        const footerYear = document.getElementById("current-year");
+        if (footerYear) {
+            footerYear.textContent = new Date().getFullYear();
+        }
+    });
+    
+    </script>
+
+
+
+<!-- Custom Scripts -->
+<script src="{% static 'main/js/main.js' %}" defer></script>
+
+</body>
+</html>

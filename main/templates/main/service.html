@@ -1,0 +1,1453 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="keywords" content="Vimal Solar">
+    <meta name="description" content="Vimal Solar">
+    <title>Vimal Solar</title>
+
+    <!-- Favicon -->
+     <link rel="icon" type="image/png" src="{% static 'Favicon.png' %}">
+     <script> document.addEventListener("DOMContentLoaded", function() {
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+          link = document.createElement("link");
+          link.rel = "icon";
+          link.type = "image/png";
+          document.head.appendChild(link);
+      }
+      link.href = "/static/Favicon.png?v=" + new Date().getTime(); // Cache busting
+  });
+   </script>
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Third-party Library Styles -->
+    <link rel="stylesheet" href="{% static 'main/lib/animate/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/lib/lightbox/css/lightbox.min.css' %}">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+</head>
+<body>
+    <!-- CSS -->
+<style>
+      /* Modal */
+      .title {
+        font-size: 28px;
+        color: royalblue;
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+      }
+
+      .title::before,.title::after {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        left: 0px;
+        background-color: royalblue;
+      }
+
+      .title::before {
+        width: 18px;
+        height: 18px;
+        background-color: royalblue;
+      }
+
+      .title::after {
+        width: 18px;
+        height: 18px;
+        animation: pulse 1s linear infinite;
+      }
+      .modal-dialog {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      /* Form */
+      .form {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          max-width: 500px;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0px 4px 10px rgba(52, 89, 223, 0.3);
+      }
+
+      .label {
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: #333;
+      }
+
+      .input {
+          width: 100%;
+          height: 45px;
+          padding: 8px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+      }
+
+      .input:focus {
+          outline: none;
+          border-color: royalblue;
+      }
+
+      .submit {
+          background-color: royalblue;
+          color: #fff;
+          padding: 12px;
+          border-radius: 10px;
+          cursor: pointer;
+          border: none;
+      }
+
+      .success-message {
+          color: green;
+          font-weight: bold;
+      }
+
+      .footer {
+        font-size: 0.9rem;
+      }
+
+      .footer h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer ul li a:hover {
+        color: #0d6efd;
+      }
+
+      .footer hr {
+        border-top: 1px solid #666;
+      }
+
+      .footer .text-white-50:hover {
+        color: #fff;
+      }
+
+      .footer img {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .footer .d-flex {
+          flex-direction: row;
+          align-items: left;
+          text-align: left;
+        }
+      }
+      @media (max-width: 768px) 
+            { 
+            .footer .address {
+              margin-left: 80px;
+              align-items: left;
+              text-align: left;}
+              
+            }
+
+      .feature-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease-in-out;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        background:rgb(0, 98, 255);
+        color: white;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .bg-custom {
+        background-color:rgb(0, 0, 0); /* Dark blue background */
+        padding: 3rem 0;
+      }
+
+      .btn-custom {
+        background-color: white;
+        color:rgb(0, 0, 0);
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .btn-custom:hover {
+        background-color: #f0f0f0;
+        color:rgb(0, 102, 255);
+      }
+
+      .marquee-section {
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        padding: 10px 0;
+      }
+
+      .marquee-container {
+        display: flex;
+        gap: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .marquee {
+        display: flex;
+        gap: 50px;
+        min-width: 100%;
+        animation: marqueeScroll 10s linear infinite;
+      }
+
+      .marquee span {
+        font-size: 1.2rem;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      @keyframes marqueeScroll {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      .our-brands {
+        padding: 50px 0;
+        background-color: #fff;
+      }
+
+      .brand-slider-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .brand-slider {
+        display: flex;
+        flex-direction: column; /* Stack rows */
+        overflow: hidden;
+        scroll-behavior: smooth;
+        width: 90%;
+        border-radius: 10px;
+      }
+
+      .brand-slide {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .brand-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .brand-logo {
+        width: 220px;
+        height: 160px;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+        border: 2px solid blue;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      .brand-logo:hover {
+        transform: scale(1.1);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .brand-slider {
+          width: 100%;
+        }
+        .brand-row {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .brand-logo {
+          width: 120px;
+          height: 80px;
+        }
+      }
+
+      .card {
+        --bg-card: rgb(255, 255, 255);
+        --primary: rgb(40, 102, 217);
+        --primary-800: rgba(255, 0, 0, 0);
+        --primary-shadow: rgb(0, 115, 255);
+        --light: #d9d9d9;
+        --zinc-800: #18181b;
+        --bg-linear: linear-gradient(0deg, var(--primary) 50%, var(--light) 125%);
+    
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-card);
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    
+      .image_container {
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        background-color: var(--primary-800);
+        border-radius: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .image_container img {
+        max-width: 100%;
+        max-height: 750px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+      }
+    
+      .title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--zinc-800);
+        text-transform: capitalize;
+      }
+    
+      .cart-button {
+        cursor: pointer;
+        padding: 0.5rem;
+        width: 100%;
+        background-image: var(--bg-linear);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: inset 0 0 0.25rem 1px var(--light);
+        transition: background 0.3s ease;
+      }
+    
+      .cart-button:hover {
+        background: var(--primary-shadow);
+      }
+
+          .kenburns-bottom {
+            animation: kenburns-bottom 5s ease-out both;
+            will-change: transform;
+          }
+    
+          @keyframes kenburns-bottom {
+            0% {
+              transform: scale(1) translateY(0);
+              transform-origin: 50% 84%;
+            }
+            100% {
+              transform: scale(1.25) translateY(15px);
+              transform-origin: bottom;
+            }
+          }
+    
+          .text-focus-in {
+            animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+              forwards;
+          }
+    
+          @keyframes text-focus-in {
+            0% {
+              filter: blur(12px);
+              opacity: 0;
+            }
+            100% {
+              filter: blur(0px);
+              opacity: 1;
+            }
+          }
+    
+          .slideInUp {
+            animation: slideInUp 1s ease-in-out;
+          }
+    
+          @keyframes slideInUp {
+            0% {
+              transform: translateY(50px);
+              opacity: 0;
+            }
+            100% {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+
+      /* General Styles */
+      body {
+        overflow-x: hidden;
+        font-family: "Times New Roman", Times, serif;
+        background-color: #ffffff;
+        margin-top: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Sticky Navbar */
+      .sticky-nav {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        height: 230px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Navbar adjustments */
+      .navbar {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        margin-bottom: 0;
+        padding: 0;
+      }
+
+      .navbar.navbar-expand-lg {
+        height: 80px;
+      }
+
+      /* Navbar Brand (logo) */
+      .navbar-brand img {
+        width: 250px;
+        height: auto;
+        font-family: "Maragsa", sans-serif;
+      }
+
+      /* Navbar Toggler Icon */
+      .navbar-toggler-icon {
+        background-color: transparent;
+      }
+
+      /* Nav-item button adjustments */
+      .nav-item.nav-link.btn {
+        height: 40px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-top: 5px;
+        color: black !important; /* Default color is black */
+        background-color: white;
+        border: 1px solid #007bff;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Active button */
+      .nav-item.nav-link.active {
+        background-color: #007bff;
+        color: white !important;
+      }
+
+      /* Change text color on hover */
+      .nav-item.nav-link.btn:hover {
+        color: white !important; /* Text turns white on hover */
+        background-color: #007bff; /* Blue background */
+        border-color: #007bff;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      }
+
+      /* Carousel image settings */
+      .carousel img {
+        object-fit: cover;
+      }
+
+      /* Large screen adjustments */
+      @media (min-width: 992px) {
+        .d-none.d-lg-flex {
+          display: flex !important;
+        }
+      }
+
+      /* Button Adjustments */
+      .navbar-nav .nav-item {
+        margin-left: 10px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: white;
+        background-color: #007bff;
+      }
+
+      /* Column and row alignment */
+      .container-fluid {
+        text-align: center;
+        padding: 0;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .col-lg-7,
+      .col-lg-5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .col-lg-7 .d-inline-flex,
+      .col-lg-5 .d-inline-flex {
+        align-items: center;
+      }
+
+      .col-lg-5 .d-inline-flex {
+        gap: 10px;
+      }
+
+      .navbar .fa {
+        font-size: 18px;
+      }
+      .btn-square {
+        padding: 10px;
+        margin-left: 10px;
+      }
+
+      .btn-link {
+        background-color: transparent;
+        border: none;
+      }
+
+      .btn-link:hover {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
+
+      .slide-bck-center {
+        -webkit-animation: slide-bck-center 0.5s
+          cubic-bezier(0.47, 0, 0.745, 0.715) 100ms forwards;
+        animation: slide-bck-center 0.5s cubic-bezier(0.47, 0, 0.745, 0.715)
+          100ms forwards;
+      }
+      @-webkit-keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+      @keyframes slide-bck-center {
+        0% {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        100% {
+          -webkit-transform: translateZ(-400px);
+          transform: translateZ(-400px);
+        }
+      }
+
+      .shadow-drop-center {
+        -webkit-animation: shadow-drop-center 0.4s
+          cubic-bezier(0.215, 0.61, 0.355, 1) 1ms both;
+        animation: shadow-drop-center 0.4s cubic-bezier(0.215, 0.61, 0.355, 1)
+          1ms both;
+      }
+
+      @-webkit-keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+      @keyframes shadow-drop-center {
+        0% {
+          -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+        100% {
+          -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      @-webkit-keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+      @keyframes slide-left {
+        0% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+        100% {
+          -webkit-transform: translateX(-100px);
+          transform: translateX(-100px);
+        }
+      }
+
+      .text-primary {
+        color: #007bff;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      h4 {
+        letter-spacing: 1px;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .portfolio-container .portfolio-item {
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .portfolio-container .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .portfolio-img {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        border-radius: 8px;
+      }
+
+      .portfolio-img img {
+        width: 100%;
+        height: 100%; /* Maintain aspect ratio */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-img:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .portfolio-img:hover .portfolio-btn {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .portfolio-btn .btn {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        border: none;
+      }
+
+      .portfolio-btn .btn:hover {
+        background-color: #007bff;
+      }
+
+      .portfolio-item .pt-3 {
+        text-align: center;
+      }
+
+      .portfolio-item p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        color: #007bff;
+      }
+
+      .portfolio-item h5 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+
+        .portfolio-item {
+          margin-bottom: 2rem;
+        }
+
+        .portfolio-img {
+          height: auto; /* Maintain aspect ratio */
+        }
+      }
+
+      .carousel-item {
+        transition: transform 0.6s ease-in-out;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+      }
+
+      .carousel-control-prev-icon:hover,
+      .carousel-control-next-icon:hover {
+        background-color: #007bff;
+      }
+      /* Hover effect on images */
+      .project-images img:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+
+      /* Button Hover Effect */
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+
+      /* Media Query for Small Screens */
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        }
+      }
+      /* Adjust carousel for mobile screens */
+      @media (max-width: 768px) {
+        .carousel-image {
+          height: 300px; /* Maintain original aspect ratio */
+          max-height: 800px; /* Maintain original aspect ratio */
+
+          width: 100%; /* Full width */
+          object-fit: cover; /* Adjust image content fit */
+        }
+        .m-align{
+          position:relative;
+          text-position:
+          text-align:center;
+          items-align: center;
+        }
+      }
+    </style>
+
+
+<!-- Navbar Starts -->
+<style>
+        /* Text Shadow for Better Readability */
+        .text-glow {
+            text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.62); /* Brighter shadow */
+        }
+
+        /* Make sure text is above overlay */
+        .position-relative {
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            section.position-relative {
+                height: 300px !important;
+            }
+            .container {
+                justify-content: center !important;
+                text-align: center;
+            }
+        }
+        /* Hide Sidebar on Large Screens */
+        @media (min-width: 769px) {
+            .sidebar {
+                display: none;
+            }
+            .header {
+              margin-left:600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container{
+              max-width: 100%
+            }
+            .container-text {
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-top: 180px;
+            }
+                .navbar-brand {
+                  margin-right: 60px; /* Pushes everything else to the right */
+              }
+              
+              .navbar-toggler {
+                  margin-left: 60px; /* Adjust as needed */
+              }
+          
+
+            .about-img {
+                height: auto;
+                max-height: 100%;
+            }
+
+            .navbar {
+                background: #fff !important;
+            }
+
+            .nav-pc {
+                display: none;
+            }
+
+            /* Sidebar Menu Styles */
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                transition: right 0.4s ease-in-out;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                gap:50px;
+            }
+
+            .sidebar.active {
+                right: 0;
+                
+            }
+
+            .sidebar-links {
+                list-style: none;
+                padding: 0;
+                text-align: center;
+            }
+
+            .sidebar-links li {
+                margin: 15px 0;
+            }
+
+            .sidebar-links a {
+                font-size: 24px;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+
+            .sidebar-links a:hover {
+                color: #007bff;
+            }
+
+            /* Close Button */
+            #closeSidebar {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 36px;
+                color: white;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* WhatsApp & Call Icons */
+            .sidebar-footer {
+                position: absolute;
+                bottom: 30px;
+                display: flex;
+                gap: 15px;
+            }
+
+            .sidebar-footer img {
+                width: 50px;
+                height: 50px;
+            }
+
+            /* Hamburger Menu */
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            .hamburger-line {
+                width: 100%;
+                height: 4px;
+                background-color: #000000;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+</style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-nav position-absolute w-100 z-index-1" style="background-color: #ffffff">
+  <div class="container py-1">
+      <!-- Logo -->
+      <a href="{% url 'index' %}" class="navbar-brand me-2"
+          style="
+              font-family: 'Theseasons';
+              font-size: 30px;
+              font-weight: bold;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              text-align: center;
+              margin-top: 15px;
+          ">
+          <img src="{% static 'main/img/favicon.png' %}" alt="Logo" style="width: 60px; height: 60px" class="navbar-brand me-2" />
+          Vimal Solar
+      </a>
+
+      <!-- Menu Icon (Hamburger) -->
+      <button class="navbar-toggler border-0 p-0 g-2"  type="button" id="sidebarToggle" aria-label="Toggle navigation" style="outline: none;">
+          <div class="hamburger">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+          </div>
+      </button>
+
+      <!-- Sidebar Menu -->
+      <div id="sidebarMenu" class="sidebar">
+          <button id="closeSidebar">&times;</button>
+          <ul class="sidebar-links">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li><a href="{% url 'service' %}">Services</a></li>
+              <li><a href="{% url 'project' %}">Gallery</a></li>
+              <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          </ul>
+      </div>
+
+      <!-- Navbar Links (Desktop) -->
+      <div class="nav-pc collapse navbar-collapse" id="navbarNav" data-bs-auto-close="false">
+          <ul class="navbar-nav ms-auto">
+              <a href="{% url 'index' %}" class="btn nav-item nav-link  rounded-pill text-white btn-outline-light" style="font-size: 14px">Home</a>
+              <a href="{% url 'service' %}" class="btn nav-item nav-link active rounded-pill text-black btn-outline-light" style="font-size: 14px">Services</a>
+              <a href="{% url 'project' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">Gallery</a>
+              <a href="{% url 'about' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">About</a>
+              <a href="{% url 'contact' %}" class="btn nav-item nav-link rounded-pill text-black btn-outline-light" style="font-size: 14px">Contact</a>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- JavaScript -->
+<script>
+  document.getElementById('sidebarToggle').addEventListener('click', function () {
+      document.getElementById('sidebarMenu').classList.add('active');
+  });
+
+  document.getElementById('closeSidebar').addEventListener('click', function () {
+      document.getElementById('sidebarMenu').classList.remove('active');
+  });
+
+  // Close sidebar when clicking outside of it
+  document.addEventListener('click', function (event) {
+      var sidebar = document.getElementById('sidebarMenu');
+      var sidebarToggle = document.getElementById('sidebarToggle');
+      if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+          sidebar.classList.remove('active');
+      }
+  });
+</script>
+
+<!-- About Us Section -->
+<section class="position-relative bg-dark text-white" style="height: 300px; overflow: hidden;">
+  <!-- Background Image -->
+  <img src="{% static 'main/img/bg.jpg' %}" 
+      class="about-img position-absolute w-100 h-100 object-fit-cover opacity-90" 
+      alt="Hero Image">
+
+  <!-- Darker Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.42);"></div>  
+
+  <!-- Content -->
+  <div class="header container container-text d-flex align-items-center justify-content-center text-center position-relative" 
+      style="z-index: 2; margin-top: 120px;">
+      <div class="col-md-6 text-white">
+          <h1 class="display-4 fw-bold text-glow">Our Service</h1>
+          <p class="text-glow"> Comprehensive solutions for your power, security, and network needs. We provide cutting-edge technology backed by expert service.</p>
+      </div>
+  </div>
+</section>
+<!-- Page Header End -->
+<style >
+  @media (max-width: 768px) {
+    .service {
+        margin-top: 50px;
+    }
+
+    .service-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        margin-left: 20px;
+    }
+}
+
+.btn-service {
+    background-color: royalblue; /* Ensures button has color */
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid royalblue; /* Adds a visible border */
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-service:hover {
+    background-color: white;
+    color: royalblue;
+}
+
+</style>
+
+
+<main class="container py-5">
+  <!-- Section: Solar Power Solutions -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="{% static 'main/img/solar-service-1.jpg' %}" alt="Solar Power Solutions" class="img-fluid rounded shadow">
+      </div>
+      <div class="service col-md-6">
+        <h2 class="h3 fw-bold text-dark mb-3">Solar Power Solutions</h2>
+        <p class="text-secondary">Transform your energy consumption with our comprehensive solar power solutions. We offer end-to-end services from consultation to installation and maintenance.</p>
+        <ul class="service-list list-unstyled">
+            <li><i class="fas fa-check text-success me-2"></i> Custom residential and commercial solar installations</li>
+            <li><i class="fas fa-check text-success me-2"></i> Professional energy efficiency analysis</li>
+            <li><i class="fas fa-check text-success me-2"></i> Expert installation and maintenance services</li>
+            <li><i class="fas fa-check text-success me-2"></i> 25-year warranty on solar panels</li>
+            <li><i class="fas fa-check text-success me-2"></i> <strong>On-Grid:</strong> Seamlessly integrates with the national grid</li>
+            <li><i class="fas fa-check text-success me-2"></i> <strong>Off-Grid:</strong> Provides a standalone power solution</li>
+            <li><i class="fas fa-check text-success me-2"></i> <strong>Hybrid:</strong> Offers uninterrupted power with backup</li>
+        </ul>
+        <a class="btn-service rounded-pill" href="#">Explore More</a>
+    </div>
+    
+    </div>
+  </section>
+
+  <!-- Section: UPS Solutions -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2">
+        <img src="{% static 'main/img/UPS-service.jpg' %}" alt="UPS Solutions" class="img-fluid rounded shadow">
+      </div>
+      <div class="service col-md-6 order-md-1">
+        <h2 class="h3 fw-bold text-dark mb-3">UPS Solutions</h2>
+        <p class="text-secondary">Ensure uninterrupted power supply for your critical operations with our reliable UPS solutions. We provide comprehensive backup power systems for businesses of all sizes.</p>
+        <ul class="service-list list-unstyled">
+          <li><i class="fas fa-check text-success me-2"></i> Advanced power backup systems</li>
+          <li><i class="fas fa-check text-success me-2"></i> Professional installation and configuration</li>
+          <li><i class="fas fa-check text-success me-2"></i> 24/7 emergency support</li>
+          <li><i class="fas fa-check text-success me-2"></i> Regular maintenance services</li>
+        </ul>
+        <a class="btn-service rounded-pill" href="#">Explore More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Surveillance Security Solutions -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="{% static 'main/img/CCTV-service.jpg' %}" alt="Surveillance Security Solutions" class="img-fluid rounded shadow">
+      </div>
+      <div class="service col-md-6">
+        <h2 class="h3 fw-bold text-dark mb-3">Surveillance Security Solutions</h2>
+        <p class="text-secondary">Protect your home or business with our advanced surveillance security solutions, designed to provide maximum safety and control.</p>
+        <ul class="service-list list-unstyled">
+          <li><i class="fas fa-check text-success me-2"></i> High-definition cameras with night vision</li>
+          <li><i class="fas fa-check text-success me-2"></i> Remote access via mobile devices</li>
+          <li><i class="fas fa-check text-success me-2"></i> Professional installation and maintenance services</li>
+          <li><i class="fas fa-check text-success me-2"></i> 24/7 monitoring and alert systems</li>
+        </ul>
+        <a class="btn-service rounded-pill" href="#">Explore More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Network Security Solutions -->
+  <section class="mb-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2">
+        <img src="{% static 'main/img/Network-service.jpg' %}" alt="Network Security Solutions" class="img-fluid rounded shadow">
+      </div>
+      <div class="service col-md-6 order-md-1">
+        <h2 class="h3 fw-bold text-dark mb-3">Network Security Solutions</h2>
+        <p class="text-secondary">Safeguard your business’s digital assets with our comprehensive network security solutions. We offer tailored services to meet your cybersecurity needs.</p>
+        <ul class="service-list list-unstyled">
+          <li><i class="fas fa-check text-success me-2"></i> Firewall and intrusion prevention systems</li>
+          <li><i class="fas fa-check text-success me-2"></i> Advanced endpoint protection</li>
+          <li><i class="fas fa-check text-success me-2"></i> 24/7 threat monitoring and response</li>
+          <li><i class="fas fa-check text-success me-2"></i> Data encryption and secure access</li>
+        </ul>
+        <a class="btn-service rounded-pill" href="#">Explore More</a>
+      </div>
+    </div>
+  </section>
+</main>
+    <!-- Call to Action Section -->
+    <div class="bg-custom text-center py-5">
+      <div class="container">
+        <h2 class="text-white fw-bold display-5">Ready to Transform Your Property?</h2>
+        <p class="mt-3 text-light fs-5">Get a customized solution for your solar and security needs.</p>
+        <div class="mt-4">
+          <a href="#" class="btn btn-custom px-5 py-3 fs-5">Request Free Quote</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Custom CSS -->
+    <style>
+      
+      .bg-custom {
+        background-color:rgb(0, 0, 0); /* Dark blue background */
+        padding: 3rem 0;
+      }
+    
+      .btn-custom {
+        background-color: white;
+        color:rgb(0, 0, 0);
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+      }
+    
+      .btn-custom:hover {
+        background-color: #f0f0f0;
+        color:rgb(0, 149, 255);
+      }
+    </style>
+
+
+
+<footer class="footer bg-dark text-white pt-3 pb-6">
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <!-- Logo Section -->
+            <div class="col-md-3 mb-1">
+                <div class="d-flex align-items-center"><a href="{% url 'about'  %}">
+                    <img src="{% static 'main/img/favicon.png' %}" alt="Brand Logo" style="width: 100px;">
+                    <img src="{% static 'main/img/Text.png' %}" class="position-relative d-none d-md-block" alt="Brand Logo" style="width: 100%; height: 150px; margin-inline-start: 0px;">
+                    <br></a>
+                </div>
+                <p class="d-none d-md-block" style="font-family: 'Times New Roman', Times, serif;">
+                    Vimal Solar is dedicated to providing high-quality solar solutions, ensuring sustainable energy for both residential and commercial needs. We offer reliable products and services to help you reduce energy costs while contributing to a greener future.
+                </p>
+            </div>
+            
+
+            <!-- Quick Links Section -->
+            <div class="col-lg-2 col-md-3 mb-4">
+                <h5 class="text-uppercase">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index' %}" class="text-white-50 text-decoration-none">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="text-white-50 text-decoration-none">About</a></li>
+                    <li><a href="{% url 'project' %}" class="text-white-50 text-decoration-none">Projects</a></li>
+                    <li><a href="{% url 'service' %}" class="text-white-50 text-decoration-none">Service</a></li>
+                    <li><a href="{% url 'contact' %}" class="text-white-50 text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Address Section -->
+            <div class="col-md-3 mb-1">
+                <h5 class="text-uppercase">Connect with us..</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50 text-decoration-none">Address: 7A/1, Madangeeswar Koil Street, Hospital Road, Near CSI Hospital, Kanchipuram - 631 502</a></li>
+                    <li><a href="mailto:vimalsolarshop8@gmail.com" class="text-white-50 text-decoration-none">Email: vimalsolarshop8@gmail.com</a></li>
+                    <li><a href="tel:+916385668684" class="text-white-50 text-decoration-none">Phone: +91 6385668684</a></li>
+                </ul>
+            </div>
+
+            <!-- Report Us Section -->
+            <div class="col-lg-2 col-md-3 mb-4 d-none d-md-block">
+                <h5 class="text-uppercase">Report Us !</h5>
+                <!-- Input field for submitting complaints -->
+                <input type="text" placeholder="Enter your feedback" class="form-control mt-2" style="height: 100px; width: 250px;">
+
+                <!-- Submit button for complaint submission -->
+                <button class="btn btn-primary mt-2">Submit</button>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="bg-white-50">
+
+        <!-- Footer Bottom -->
+        <div class="d-flex flex-column text-center text-md-start flex-md-row justify-content-between align-items-center">
+            <!-- Copyright Section -->
+            <p class="mb-2 text-white-50">
+                &copy; <span id="current-year"></span> Vimal Solar. All Rights Reserved.
+            </p>
+        
+            <!-- Social Media Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center mb-1 d-none d-md-block">
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/vimalsolar_kpm/?utm_source=ig_web_button_share_sheet" class="text-white-50 me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white-50"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <!-- Footer Links (Single Row for Mobile and Desktop) -->
+            <div class="row d-flex justify-content-center d-none d-md-block">
+                <a href="#" class="text-white-50 mx-2">Terms of Service</a>
+                <a href="#" class="text-white-50 mx-2">Privacy Policy</a>
+                <a href="#" class="text-white-50 mx-2">Sitemap</a>
+            </div>
+
+        </div>
+        
+        
+    </div>
+</footer>
+
+<!-- JavaScript to display current year -->
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
+
+
+
+
+
+<!-- CSS for Responsive Design -->
+<style>
+    /* Mobile View Adjustments */
+    @media (max-width: 768px) {
+        .footer .row {
+            text-align: center; /* Center the text for mobile */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 1 !important; /* Remove left margin for mobile */
+        }
+
+        .footer .d-flex {
+            flex-direction: column; /* Stack the social links and other items vertically */
+            align-items: center;
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 0rem !important; /* Reduce space between items */
+        }
+    }
+
+    /* Tablet and PC View Adjustments */
+    @media (min-width: 768px) {
+        .footer .row {
+            text-align: left; /* Align text to the left on larger screens */
+        }
+
+        .footer .d-flex {
+            flex-direction: row; /* Place items side by side on larger screens */
+        }
+
+        .footer .col-lg-2 {
+            margin-left: 50px; /* Add margin to left columns for PC */
+        }
+
+        .footer .mb-3 {
+            margin-bottom: 1rem !important; /* Add spacing between items */
+        }
+    }
+</style>
+
+
+    <!-- Back to Top -->
+    <a href="{% url 'index' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Bootstrap Bundle JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+    $(document).ready(function () {
+        // Toggle conditional sections based on service type
+        $('#service_type').on('change', function () {
+            let selectedType = $(this).val();
+            if (selectedType === 'solar') {
+                $('#solar_section').addClass('active').show();
+                $('#cctv_section').removeClass('active').hide();
+            } else if (selectedType === 'cctv') {
+                $('#cctv_section').addClass('active').show();
+                $('#solar_section').removeClass('active').hide();
+            } else {
+                $('#solar_section, #cctv_section').removeClass('active').hide();
+            }
+        });
+
+        // AJAX form submission
+        $('#enquiryForm').on('submit', function (e) {
+            e.preventDefault();
+
+            // Form validation
+            if (!this.checkValidity()) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // AJAX request
+            $.ajax({
+                type: 'POST',
+                url: window.location.href,
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function (response) {
+                    alert(response.message);
+                    $('#enquiryForm')[0].reset();
+                    $('#solar_section, #cctv_section').removeClass('active').hide();
+                },
+                error: function (xhr) {
+                    alert(`Error: ${xhr.responseJSON.message || 'Unknown error'}`);
+                }
+            });
+        });
+
+        // Sticky Navbar Scroll Effect
+        const navbar = document.querySelector('.sticky-nav');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize Carousel
+        var carousel = new bootstrap.Carousel(document.querySelector('.carousel'), {
+            interval: 5000,
+            ride: 'carousel'
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1 // Element is considered visible when 10% of it is in view
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+
+                if (entry.isIntersecting) {
+                    // Play the animation when the section is in view
+                    element.classList.add('fadeIn', element.dataset.animation);
+
+                    // Unobserve to stop further animations when scrolling back
+                    observer.unobserve(element);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Attach observer to all elements with the `wow` class
+        document.querySelectorAll('.wow').forEach((element) => {
+            const animationType = element.classList.contains('slideInRight') ? 'slideInRight' : 'slideInLeft';
+            element.dataset.animation = animationType;
+
+            // Ensure animations reset after the first play
+            element.classList.add('animated');
+            observer.observe(element);
+        });
+    });
+</script>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'main/lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'main/lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'main/lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'main/lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'main/lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'main/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>
